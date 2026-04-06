@@ -1,0 +1,27 @@
+---
+title: "How I Automated 51 Financial Ratios with Claude"
+date: "2026-03-08"
+description: "A deep dive into how I used the Claude API to automate comprehensive financial ratio analysis for Indian companies."
+tags: ["Building in Public", "AI"]
+readTime: "7 min read"
+---
+
+# How I Automated 51 Financial Ratios with Claude
+
+When I started building the Financial Ratio Analysis Toolkit, I had one goal: eliminate the hours CAs spend manually calculating ratios from financial statements.
+
+## The Manual Process
+
+A typical ratio analysis involves extracting data from balance sheets and P&L statements, computing 51+ ratios across profitability, liquidity, solvency, efficiency, and market categories. Then scoring them, detecting fraud indicators, and creating a presentable report.
+
+This used to take 3-4 hours per company. Now it takes minutes.
+
+## The Architecture
+
+I used Claude's API to parse financial statement data, compute ratios with proper formulas aligned to Indian Accounting Standards, and generate narrative insights. The tricky part was handling edge cases — negative equity, zero denominators, and industry-specific benchmarks.
+
+## Results
+
+The toolkit now handles Altman Z-Score, Beneish M-Score (fraud detection), and 49 other ratios. It's been used by 500+ CAs and counting.
+
+Building this taught me that the best AI products don't replace human judgment — they eliminate the tedious work so professionals can focus on what matters.
