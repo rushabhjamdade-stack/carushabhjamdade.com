@@ -3,16 +3,17 @@
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Send, CheckCircle } from "lucide-react";
+import { Send, CheckCircle, Shield, Clock, Mail } from "lucide-react";
 
 export default function Newsletter() {
   const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [status, setStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
-
     setStatus("loading");
     try {
       const res = await fetch("/api/subscribe", {
@@ -32,20 +33,26 @@ export default function Newsletter() {
   };
 
   return (
-    <section id="newsletter" className="bg-gradient-to-br from-navy via-indigo-950 to-navy py-20 relative overflow-hidden">
-      {/* Decorative elements */}
+    <section
+      id="newsletter"
+      className="bg-gradient-to-br from-navy via-indigo-950 to-navy py-16 relative overflow-hidden"
+    >
       <div className="absolute top-0 left-1/4 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-violet-500/10 rounded-full blur-3xl pointer-events-none" />
+
       <div className="max-w-site mx-auto px-6 text-center relative z-10">
+        <p className="text-indigo-300 text-sm font-medium mb-3">
+          Join 200+ finance professionals
+        </p>
         <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
           Get my weekly take on AI in Finance
         </h2>
-        <p className="text-gray-400 mb-8 max-w-md mx-auto">
+        <p className="text-gray-400 mb-6 max-w-md mx-auto">
           No spam. No fluff. Just what&apos;s working — from someone who builds.
         </p>
 
         {status === "success" ? (
-          <div className="flex items-center justify-center gap-2 text-green-400">
+          <div className="flex items-center justify-center gap-2 text-emerald-400">
             <CheckCircle size={20} />
             <span>You&apos;re in! Check your inbox.</span>
           </div>
@@ -78,6 +85,23 @@ export default function Newsletter() {
             Something went wrong. Please try again.
           </p>
         )}
+
+        {/* Trust indicators */}
+        <div className="flex flex-wrap justify-center gap-6 mt-6">
+          {[
+            { icon: Clock, text: "Weekly delivery" },
+            { icon: Shield, text: "No spam ever" },
+            { icon: Mail, text: "Unsubscribe anytime" },
+          ].map((item) => (
+            <div
+              key={item.text}
+              className="flex items-center gap-1.5 text-xs text-gray-500"
+            >
+              <item.icon size={12} />
+              {item.text}
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

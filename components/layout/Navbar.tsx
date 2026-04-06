@@ -11,36 +11,28 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 100);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Active section tracking via IntersectionObserver
   useEffect(() => {
     const sectionIds = navLinks
       .map((l) => l.href.replace("#", ""))
       .filter((id) => id && !id.startsWith("/"));
-
     const observer = new IntersectionObserver(
       (entries) => {
         const visible = entries
           .filter((e) => e.isIntersecting)
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-        if (visible.length > 0) {
-          setActiveSection(visible[0].target.id);
-        }
+        if (visible.length > 0) setActiveSection(visible[0].target.id);
       },
       { rootMargin: "-20% 0px -60% 0px", threshold: [0, 0.25, 0.5] }
     );
-
     sectionIds.forEach((id) => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
     });
-
     return () => observer.disconnect();
   }, []);
 
@@ -61,20 +53,27 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-site mx-auto px-6 h-16 flex items-center justify-between">
-        {/* Logo */}
+        {/* Branded Logo */}
         <a
           href="#hero"
           onClick={(e) => {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
-          className="font-bold text-xl"
+          className="flex items-center gap-2.5"
         >
-          <span className="text-gradient">RJ</span>
+          <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center shadow-md shadow-indigo-200/50">
+            <span className="text-white font-bold text-sm tracking-tight">
+              RJ
+            </span>
+          </div>
+          <span className="hidden md:block font-semibold text-gray-900 text-sm">
+            CA Rushabh Jamdade
+          </span>
         </a>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-7">
           {navLinks.map((link) => (
             <a
               key={link.href}
@@ -85,7 +84,7 @@ export default function Navbar() {
                   scrollTo(link.href);
                 }
               }}
-              className={`text-sm font-medium transition-colors ${
+              className={`text-[15px] font-medium transition-colors ${
                 activeSection === link.href.replace("#", "")
                   ? "text-indigo-600"
                   : "text-gray-500 hover:text-gray-900"
@@ -96,7 +95,7 @@ export default function Navbar() {
           ))}
           <Button
             size="sm"
-            className="bg-gradient-to-r from-indigo-500 to-violet-500 hover:from-indigo-600 hover:to-violet-600 text-white rounded-lg shadow-md shadow-indigo-200/50"
+            className="bg-gradient-to-r from-indigo-500 to-violet-500 hover:from-indigo-600 hover:to-violet-600 text-white rounded-lg shadow-md shadow-indigo-200/50 px-5"
             onClick={() => scrollTo("#booking")}
           >
             Book a Call
@@ -105,7 +104,7 @@ export default function Navbar() {
 
         {/* Mobile Hamburger */}
         <button
-          className="md:hidden p-2 text-gray-700"
+          className="lg:hidden p-2 text-gray-700"
           aria-label="Open menu"
           onClick={() => setMobileOpen(!mobileOpen)}
         >
@@ -113,24 +112,24 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile Menu Drawer */}
+      {/* Mobile Drawer */}
       {mobileOpen && (
         <>
           <div
-            className="fixed inset-0 bg-black/20 z-40 md:hidden"
+            className="fixed inset-0 bg-black/20 z-40 lg:hidden"
             onClick={() => setMobileOpen(false)}
           />
-          <div className="fixed top-0 right-0 w-72 h-full bg-white z-50 shadow-xl md:hidden">
+          <div className="fixed top-0 right-0 w-72 h-full bg-white z-50 shadow-xl lg:hidden">
             <div className="flex justify-end p-4">
               <button
                 onClick={() => setMobileOpen(false)}
-                className="p-2 text-gray-500"
+                className="p-2 text-gray-500 text-xl"
                 aria-label="Close menu"
               >
                 &times;
               </button>
             </div>
-            <div className="flex flex-col gap-6 px-6">
+            <div className="flex flex-col gap-5 px-6">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
@@ -141,13 +140,13 @@ export default function Navbar() {
                       scrollTo(link.href);
                     }
                   }}
-                  className="text-lg font-medium text-gray-700 hover:text-blue"
+                  className="text-lg font-medium text-gray-700 hover:text-indigo-600"
                 >
                   {link.label}
                 </a>
               ))}
               <Button
-                className="bg-gradient-to-r from-indigo-500 to-violet-500 hover:from-indigo-600 hover:to-violet-600 text-white rounded-lg shadow-md shadow-indigo-200/50 w-full mt-4"
+                className="bg-gradient-to-r from-indigo-500 to-violet-500 hover:from-indigo-600 hover:to-violet-600 text-white rounded-lg w-full mt-2"
                 onClick={() => scrollTo("#booking")}
               >
                 Book a Call

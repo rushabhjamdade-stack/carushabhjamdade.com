@@ -15,8 +15,8 @@ export const avatarStates: Record<string, { message: string }> = {
   content: {
     message: "I write about what I build. Novel concept, I know.",
   },
-  tools: {
-    message: "Excel + AI = unstoppable. These tools save CAs hours every week.",
+  testimonials: {
+    message: "Real feedback from real users. That's the best kind of validation.",
   },
   resources: {
     message: "Free tools! No catch. Okay, maybe I'll ask for your email.",

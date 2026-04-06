@@ -8,6 +8,7 @@ interface SectionWrapperProps {
   children: ReactNode;
   className?: string;
   bgColor?: string;
+  compact?: boolean;
 }
 
 export default function SectionWrapper({
@@ -15,14 +16,18 @@ export default function SectionWrapper({
   children,
   className = "",
   bgColor = "bg-white",
+  compact = false,
 }: SectionWrapperProps) {
   return (
-    <section id={id} className={`py-20 md:py-24 ${bgColor} ${className}`}>
+    <section
+      id={id}
+      className={`${compact ? "py-8 md:py-10" : "py-12 md:py-16"} ${bgColor} ${className}`}
+    >
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.6, ease: "easeOut" as const }}
         className="max-w-site mx-auto px-6"
       >
         {children}
