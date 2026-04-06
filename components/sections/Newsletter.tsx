@@ -40,7 +40,7 @@ export default function Newsletter() {
       <div className="absolute top-0 left-1/4 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-violet-500/10 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-site mx-auto px-6 text-center relative z-10">
+      <div className="max-w-[1400px] mx-auto px-8 md:px-12 lg:px-16 text-center relative z-10">
         <p className="text-indigo-300 text-sm font-medium mb-3">
           Join 200+ finance professionals
         </p>

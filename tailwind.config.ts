@@ -26,7 +26,7 @@ const config: Config = {
         mono: ["var(--font-geist-mono)", "monospace"],
       },
       maxWidth: {
-        site: "1200px",
+        site: "1400px",
       },
       boxShadow: {
         card: "0 1px 3px rgba(0,0,0,0.04)",

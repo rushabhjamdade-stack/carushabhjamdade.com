@@ -13,7 +13,7 @@ export default function BlogPage() {
 
   return (
     <main className="min-h-screen bg-white">
-      <div className="max-w-site mx-auto px-6 py-24">
+      <div className="max-w-[1400px] mx-auto px-8 md:px-12 lg:px-16 py-24">
         <a
           href="/"
           className="inline-flex items-center gap-1 text-blue text-sm font-medium mb-8 hover:gap-2 transition-all"

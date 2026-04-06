@@ -52,7 +52,7 @@ export default function Navbar() {
           : "bg-transparent"
       }`}
     >
-      <div className="max-w-site mx-auto px-6 h-16 flex items-center justify-between">
+      <div className="max-w-[1400px] mx-auto px-8 md:px-12 lg:px-16 h-16 flex items-center justify-between">
         {/* Branded Logo */}
         <a
           href="#hero"

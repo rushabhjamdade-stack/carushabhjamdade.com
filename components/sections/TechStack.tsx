@@ -16,7 +16,7 @@ const techStack = [
 export default function TechStack() {
   return (
     <section className="py-10 bg-gray-50/50 border-y border-gray-100">
-      <div className="max-w-site mx-auto px-6 text-center">
+      <div className="max-w-[1400px] mx-auto px-8 md:px-12 lg:px-16 text-center">
         <p className="text-sm font-medium text-gray-400 uppercase tracking-widest mb-5">
           The stack I use to ship fast
         </p>

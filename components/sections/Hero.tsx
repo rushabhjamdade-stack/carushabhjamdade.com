@@ -28,8 +28,8 @@ export default function Hero() {
       <div className="absolute top-10 -left-32 w-80 h-80 bg-indigo-200/20 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 -right-32 w-80 h-80 bg-violet-200/20 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-site mx-auto px-6 pt-24 pb-12 relative z-10 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+      <div className="max-w-[1400px] mx-auto px-8 md:px-12 lg:px-16 pt-24 pb-12 relative z-10 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
           {/* Left — Text */}
           <div>
             <motion.div

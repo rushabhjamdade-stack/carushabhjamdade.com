@@ -12,7 +12,7 @@ const credentials = [
 export default function CredibilityBar() {
   return (
     <section className="py-6 border-y border-gray-100 bg-gradient-to-r from-gray-50/50 via-white to-gray-50/50">
-      <div className="max-w-site mx-auto px-6">
+      <div className="max-w-[1400px] mx-auto px-8 md:px-12 lg:px-16">
         <div className="flex items-center justify-center gap-3 mb-4">
           <div className="h-px flex-1 bg-gray-200 max-w-[60px]" />
           <p className="text-xs text-gray-400 uppercase tracking-widest font-medium">
