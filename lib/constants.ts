@@ -8,8 +8,7 @@ export const products = [
     url: "#",
     emoji: "🔒",
     featured: true,
-    gradient: "from-slate-500 to-blue-600",
-    mockupType: "document" as const,
+    image: "/images/lockedpdfs.jpg",
     stats: "100% client-side processing",
   },
   {
@@ -21,8 +20,7 @@ export const products = [
     url: "https://moneysmartkids.in",
     emoji: "🧒",
     featured: false,
-    gradient: "from-amber-400 to-orange-500",
-    mockupType: "cards" as const,
+    image: "/images/moneysmartkids.jpg",
     stats: "Ages 5-13 · Parent-approved",
   },
   {
@@ -34,8 +32,7 @@ export const products = [
     url: "#",
     emoji: "🧾",
     featured: false,
-    gradient: "from-slate-400 to-indigo-500",
-    mockupType: "form" as const,
+    image: "/images/taxpilot.jpg",
   },
   {
     name: "SplitEasy",
@@ -46,8 +43,7 @@ export const products = [
     url: "#",
     emoji: "💸",
     featured: false,
-    gradient: "from-violet-400 to-pink-500",
-    mockupType: "cards" as const,
+    image: "/images/spliteasy.jpg",
   },
 ];
 

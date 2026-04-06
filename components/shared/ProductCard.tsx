@@ -1,8 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight } from "lucide-react";
-import BrowserMockup from "./BrowserMockup";
 
 interface ProductCardProps {
   name: string;
@@ -12,8 +12,7 @@ interface ProductCardProps {
   url: string;
   emoji: string;
   featured?: boolean;
-  gradient?: string;
-  mockupType?: "dashboard" | "form" | "cards" | "document" | "spreadsheet";
+  image?: string;
   stats?: string;
 }
 
@@ -40,8 +39,7 @@ export default function ProductCard({
   url,
   emoji,
   featured,
-  gradient = "from-indigo-400 to-violet-500",
-  mockupType = "dashboard",
+  image,
   stats,
 }: ProductCardProps) {
   const statusInfo = statusConfig[status];
@@ -55,7 +53,6 @@ export default function ProductCard({
         className="group block md:col-span-2 bg-white border border-gray-200 rounded-2xl card-premium overflow-hidden"
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
-          {/* Left — text */}
           <div className="p-6 md:p-8 flex flex-col justify-center">
             <Badge
               variant="outline"
@@ -94,13 +91,17 @@ export default function ProductCard({
               Try it <ArrowRight size={14} />
             </span>
           </div>
-          {/* Right — mockup */}
-          <div className="p-4 md:p-6 bg-gray-50/50 flex items-center">
-            <BrowserMockup
-              title={`${name.toLowerCase().replace(/\s/g, "")}.com`}
-              gradient={gradient}
-              mockupType={mockupType}
-            />
+          {/* Screenshot */}
+          <div className="relative bg-gray-50 flex items-center justify-center overflow-hidden">
+            {image && (
+              <Image
+                src={image}
+                alt={`${name} screenshot`}
+                width={700}
+                height={450}
+                className="object-cover object-top w-full h-full"
+              />
+            )}
           </div>
         </div>
       </a>
@@ -114,19 +115,19 @@ export default function ProductCard({
       rel={url.startsWith("http") ? "noopener noreferrer" : undefined}
       className="group block bg-white border border-gray-200 rounded-2xl card-premium overflow-hidden"
     >
-      {/* Mockup preview */}
-      <div className="p-3 pb-0">
-        <div className="rounded-lg overflow-hidden">
-          <BrowserMockup
-            title={`${name.toLowerCase().replace(/\s/g, "")}.app`}
-            gradient={gradient}
-            mockupType={mockupType}
-            className="!shadow-none !border-0"
+      {/* Screenshot */}
+      {image && (
+        <div className="relative w-full h-48 overflow-hidden">
+          <Image
+            src={image}
+            alt={`${name} screenshot`}
+            fill
+            className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
           />
         </div>
-      </div>
+      )}
       {/* Content */}
-      <div className="p-5 pt-4">
+      <div className="p-5">
         <div className="flex items-center justify-between mb-2">
           <div className="flex items-center gap-2">
             <span className="text-xl">{emoji}</span>
