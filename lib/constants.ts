@@ -4,7 +4,6 @@ export const products = [
     description:
       "Browser-side PDF toolkit for Indian professionals. Merge, split, compress, and protect PDFs — zero server uploads, 100% privacy.",
     status: "live" as const,
-    tags: ["Next.js", "Browser APIs", "PDF.js"],
     url: "#",
     emoji: "🔒",
     featured: true,
@@ -16,10 +15,9 @@ export const products = [
     description:
       "Financial literacy course for Indian children aged 5-13. Fun, interactive lessons on saving, spending, and investing.",
     status: "live" as const,
-    tags: ["Next.js", "Supabase", "Gamification"],
     url: "https://moneysmartkids.in",
     emoji: "🧒",
-    featured: false,
+    featured: true,
     image: "/images/moneysmartkids.jpg",
     stats: "Ages 5-13 · Parent-approved",
   },
@@ -28,10 +26,9 @@ export const products = [
     description:
       "ITR filing automation for CA firms — from free calculator to full filing packages. AI-powered, compliance-first.",
     status: "coming-soon" as const,
-    tags: ["Next.js", "Claude API", "Tax Engine"],
     url: "#",
     emoji: "🧾",
-    featured: false,
+    featured: true,
     image: "/images/taxpilot.jpg",
   },
   {
@@ -39,10 +36,9 @@ export const products = [
     description:
       "AI-powered expense splitting app. Scan receipts, split bills, settle up — no more awkward money conversations.",
     status: "beta" as const,
-    tags: ["Next.js", "Claude API", "OCR"],
     url: "#",
     emoji: "💸",
-    featured: false,
+    featured: true,
     image: "/images/spliteasy.jpg",
   },
 ];

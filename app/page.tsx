@@ -7,8 +7,8 @@ import WhatIDo from "@/components/sections/WhatIDo";
 import Products from "@/components/sections/Products";
 import Testimonials from "@/components/sections/Testimonials";
 import About from "@/components/sections/About";
-import TechStack from "@/components/sections/TechStack";
 import FeaturedContent from "@/components/sections/FeaturedContent";
+import LinkedInFeed from "@/components/sections/LinkedInFeed";
 import Resources from "@/components/sections/Resources";
 import BookACall from "@/components/sections/BookACall";
 import Newsletter from "@/components/sections/Newsletter";
@@ -28,8 +28,8 @@ export default function Home() {
         <Products />
         <Testimonials />
         <About />
-        <TechStack />
         <FeaturedContent />
+        <LinkedInFeed />
         <Resources />
         <BookACall />
         <Newsletter />

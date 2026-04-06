@@ -7,7 +7,7 @@ const timeline = [
   { year: "2019", label: "CA Qualified", sub: "ICAI" },
   { year: "2020", label: "PwC", sub: "Big 4 Audit" },
   { year: "2022", label: "Thermo Fisher", sub: "Fortune 500" },
-  { year: "2024", label: "Solo Founder", sub: "AI Products" },
+  { year: "2024", label: "AI Product Builder", sub: "Building for Finance" },
 ];
 
 const stats = [
@@ -47,10 +47,9 @@ export default function About() {
             </strong>
           </p>
           <p>
-            Today, I&apos;m a solo founder shipping AI-powered products for
-            finance — from PDF toolkits used by professionals to financial
-            literacy courses for children. My tech stack is Next.js, Claude, and
-            Supabase. My fuel is chai.
+            Today, I build AI-powered products for finance — from PDF
+            toolkits used by professionals to financial literacy courses for
+            children. My fuel is chai and an obsession with shipping fast.
           </p>
           <p className="text-navy font-semibold border-l-4 border-indigo-400 pl-4 py-1">
             I believe the future of finance isn&apos;t about replacing CAs with

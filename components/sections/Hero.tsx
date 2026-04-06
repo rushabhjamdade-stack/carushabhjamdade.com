@@ -59,7 +59,7 @@ export default function Hero() {
               {...fadeUp(0.45)}
               className="text-base md:text-lg text-gray-500 max-w-lg mb-6 leading-relaxed"
             >
-              Chartered Accountant turned solo founder. I build AI-powered
+              Chartered Accountant turned AI Product Builder. I create
               products that solve real problems in finance, tax, and accounting.
             </motion.p>
 

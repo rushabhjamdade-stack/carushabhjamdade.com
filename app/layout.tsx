@@ -16,11 +16,11 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "CA Rushabh Jamdade — Chartered Accountant × AI Product Builder",
   description:
-    "I build AI-powered products for finance, tax, and accounting. Chartered Accountant, solo founder, and builder of Money Smart Kids, TaxPilot, SplitEasy, LockedPDFs and more.",
+    "I build AI-powered products for finance, tax, and accounting. Chartered Accountant and AI Product Builder — creator of LockedPDFs, Money Smart Kids, TaxPilot, SplitEasy and more.",
   openGraph: {
     title: "CA Rushabh Jamdade — AI Product Builder for Finance",
     description:
-      "Chartered Accountant turned solo founder. Building AI tools for finance.",
+      "Chartered Accountant turned AI Product Builder. Building tools for finance.",
     type: "website",
     url: "https://carushabhjamdade.com",
   },

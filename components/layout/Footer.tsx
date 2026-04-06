@@ -89,8 +89,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-gray-500 text-sm">
-            &copy; 2026 CA Rushabh Jamdade. Built with Next.js, Claude & a lot
-            of chai.
+            &copy; 2026 CA Rushabh Jamdade. Built with AI & a lot of chai.
           </p>
           <div className="flex gap-4">
             <a href="#" className="text-gray-500 hover:text-gray-300 text-sm">

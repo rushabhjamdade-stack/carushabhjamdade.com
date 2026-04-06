@@ -17,18 +17,18 @@ const posts = [
     slug: "why-cas-should-build-ai",
   },
   {
-    title: "How I Automated 51 Financial Ratios with Claude",
+    title: "How I Automated 51 Financial Ratios with AI",
     category: "BUILDING IN PUBLIC",
     categoryColor: "from-violet-400 to-purple-500",
     date: "March 8, 2026",
     readTime: "7 min read",
     excerpt:
-      "A deep dive into how I used the Claude API to automate comprehensive financial ratio analysis for Indian companies.",
+      "A deep dive into how I used AI to automate comprehensive financial ratio analysis for Indian companies.",
     slug: "automating-51-ratios",
   },
   {
-    title: "The Solo Founder's Guide to Shipping AI Products",
-    category: "SOLO FOUNDER",
+    title: "How to Ship AI Products Fast — A Practical Guide",
+    category: "PRODUCT BUILDING",
     categoryColor: "from-amber-400 to-orange-500",
     date: "March 1, 2026",
     readTime: "6 min read",

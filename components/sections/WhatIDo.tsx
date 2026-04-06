@@ -18,7 +18,7 @@ const pillars = [
     icon: Hammer,
     title: "AI Product Builder",
     description:
-      "I build full-stack AI products solo — from architecture to deployment. My stack: Next.js, Claude API, Supabase, and relentless iteration.",
+      "I build AI-powered products end-to-end — from problem discovery to production deployment. Speed, iteration, and shipping what matters.",
     stat: "Full-stack",
     gradient: "from-violet-500 to-purple-500",
     link: "#products",
@@ -27,7 +27,7 @@ const pillars = [
     icon: PenLine,
     title: "Content & Thought Leadership",
     description:
-      "I write about AI in finance, building products as a solo founder, and the future of the CA profession — on LinkedIn and my blog.",
+      "I write about AI in finance, building products, and the future of the CA profession — on LinkedIn and my blog.",
     stat: "10+ articles",
     gradient: "from-blue-500 to-cyan-500",
     link: "#content",

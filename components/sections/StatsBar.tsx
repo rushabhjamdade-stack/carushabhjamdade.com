@@ -3,10 +3,10 @@
 import CountUpNumber from "@/components/shared/CountUpNumber";
 
 const stats = [
-  { end: 6, suffix: "+", label: "Products Shipped" },
-  { end: 51, suffix: "", label: "Ratios Automated" },
-  { end: 500, suffix: "+", label: "CAs Reached" },
-  { end: 3, suffix: "+", label: "Years Building" },
+  { end: 1000, suffix: "+", label: "PDFs Processed", sub: "LockedPDFs" },
+  { end: 51, suffix: "", label: "Ratios Automated", sub: "Financial Toolkit" },
+  { end: 500, suffix: "+", label: "CAs Reached", sub: "Across India" },
+  { end: 4, suffix: "", label: "Products Live", sub: "And counting" },
 ];
 
 export default function StatsBar() {
@@ -17,12 +17,10 @@ export default function StatsBar() {
           {stats.map((stat) => (
             <div key={stat.label} className="text-center">
               <p className="text-3xl md:text-4xl font-bold text-gradient mb-1">
-                <CountUpNumber
-                  end={stat.end}
-                  suffix={stat.suffix}
-                />
+                <CountUpNumber end={stat.end} suffix={stat.suffix} />
               </p>
-              <p className="text-sm text-gray-500 font-medium">{stat.label}</p>
+              <p className="text-sm font-medium text-gray-700">{stat.label}</p>
+              <p className="text-xs text-gray-400">{stat.sub}</p>
             </div>
           ))}
         </div>

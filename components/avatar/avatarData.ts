@@ -7,7 +7,7 @@ export const avatarStates: Record<string, { message: string }> = {
     message: "I wear three hats. Somehow they all fit.",
   },
   products: {
-    message: "Built all of these solo. Claude and chai are my co-founders.",
+    message: "Built all of these. Chai and determination are my co-founders.",
   },
   about: {
     message: "PwC taught me to audit. I taught myself to automate the audit.",
@@ -17,6 +17,9 @@ export const avatarStates: Record<string, { message: string }> = {
   },
   testimonials: {
     message: "Real feedback from real users. That's the best kind of validation.",
+  },
+  linkedin: {
+    message: "LinkedIn is where I share the real behind-the-scenes.",
   },
   resources: {
     message: "Free tools! No catch. Okay, maybe I'll ask for your email.",
@@ -30,16 +33,16 @@ export const avatarStates: Record<string, { message: string }> = {
 };
 
 export const bonusQuips = [
-  "My debugging process: console.log, chai, pray, repeat.",
   "Yes, I left a Fortune 500 job to make PDFs smarter. I'm fine.",
-  "I've written more TypeScript than audit reports at this point.",
-  "Claude is my co-founder. We don't argue about equity.",
   "AI in Finance isn't the future — it's what I shipped last Tuesday.",
   "51 financial ratios. Automated. Before breakfast. (Okay, before lunch.)",
   "My LinkedIn says 'AI Product Builder.' My mom says 'why not government job?'",
   "If you're reading this, you either want to hire me or you're my mom. Hi, mom.",
-  "I've mass-produced more MVPs than my CA batchmates have filed ITRs.",
-  "Powered by Next.js, Claude, Supabase, and an unreasonable amount of optimism.",
+  "I've shipped more products than my CA batchmates have filed ITRs.",
+  "The best time to automate was yesterday. The second best time is now.",
+  "Finance + AI = my entire personality at this point.",
+  "I don't just find problems. I ship solutions.",
+  "Somewhere between audit reports and product launches, I found my calling.",
 ];
 
 export const easterEggs: Record<number, string> = {
@@ -51,7 +54,7 @@ export const easterEggs: Record<number, string> = {
 export function getTimeOfDayMessage(): string {
   const hour = new Date().getHours();
   if (hour < 6) {
-    return "Late night browsing? Same. I'm probably deploying a hotfix right now.";
+    return "Late night browsing? Same. I'm probably shipping a hotfix right now.";
   } else if (hour < 12) {
     return "Good morning! Best time to build things.";
   } else if (hour < 17) {
@@ -59,7 +62,7 @@ export function getTimeOfDayMessage(): string {
   } else if (hour < 21) {
     return "Evening mode. Still building, still shipping.";
   } else {
-    return "Still working? A true founder. Or a CA during filing season.";
+    return "Still working? Respect. Or is it CA filing season?";
   }
 }
 

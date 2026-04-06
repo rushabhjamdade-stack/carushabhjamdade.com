@@ -12,10 +12,10 @@ export default function Products() {
         Products I&apos;ve built
       </h2>
       <p className="text-gray-500 text-center mb-10 max-w-md mx-auto">
-        Solo-founded. AI-powered. Solving real problems in finance.
+        AI-powered. Purpose-built. Solving real problems in finance.
       </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <div className="space-y-5">
         {products.map((product, i) => (
           <motion.div
             key={product.name}
@@ -23,7 +23,6 @@ export default function Products() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.08, duration: 0.5 }}
-            className={product.featured ? "md:col-span-2" : ""}
           >
             <ProductCard {...product} />
           </motion.div>
