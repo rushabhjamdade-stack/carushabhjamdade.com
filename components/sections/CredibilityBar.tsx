@@ -2,43 +2,11 @@
 
 import { motion } from "framer-motion";
 
-function PwCLogo() {
-  return (
-    <svg width="48" height="22" viewBox="0 0 48 22" fill="none" className="text-gray-600">
-      <text x="0" y="18" fontSize="20" fontWeight="800" fontFamily="Georgia, serif" fill="currentColor">
-        PwC
-      </text>
-    </svg>
-  );
-}
-
-function ThermoFisherLogo() {
-  return (
-    <span className="text-sm md:text-base font-bold text-gray-600 tracking-tight leading-none">
-      Thermo Fisher<br />
-      <span className="text-[10px] md:text-xs font-normal text-gray-400 tracking-normal">Scientific</span>
-    </span>
-  );
-}
-
-function ICAILogo() {
-  return (
-    <div className="flex items-center gap-1.5">
-      <svg width="20" height="22" viewBox="0 0 20 22" fill="none" className="text-gray-600">
-        {/* Shield shape */}
-        <path d="M10 1L19 5V11C19 16.5 15 20 10 21C5 20 1 16.5 1 11V5L10 1Z" stroke="currentColor" strokeWidth="1.5" fill="none" />
-        <text x="10" y="14" fontSize="8" fontWeight="700" textAnchor="middle" fill="currentColor">CA</text>
-      </svg>
-      <span className="text-sm md:text-base font-bold text-gray-600">ICAI</span>
-    </div>
-  );
-}
-
 const credentials = [
-  { key: "pwc", logo: <PwCLogo />, sub: "Big 4 Experience" },
-  { key: "thermo", logo: <ThermoFisherLogo />, sub: "" },
-  { key: "icai", logo: <ICAILogo />, sub: "Chartered Accountant" },
-  { key: "builder", logo: <span className="text-sm md:text-base font-bold text-gray-600">AI Product Builder</span>, sub: "Products for Finance" },
+  { name: "PwC", sub: "Big 4 Experience" },
+  { name: "Thermo Fisher", sub: "Fortune 500" },
+  { name: "ICAI", sub: "Chartered Accountant" },
+  { name: "AI Product Builder", sub: "Products for Finance" },
 ];
 
 export default function CredibilityBar() {
@@ -55,7 +23,7 @@ export default function CredibilityBar() {
         <div className="flex flex-wrap justify-center items-center gap-6 md:gap-10">
           {credentials.map((cred, i) => (
             <motion.div
-              key={cred.key}
+              key={cred.name}
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
@@ -63,8 +31,10 @@ export default function CredibilityBar() {
               className="flex items-center gap-3"
             >
               <div className="text-center">
-                {cred.logo}
-                {cred.sub && <p className="text-[10px] text-gray-400 mt-0.5">{cred.sub}</p>}
+                <span className="text-base md:text-lg font-bold text-gray-700 tracking-tight">
+                  {cred.name}
+                </span>
+                <p className="text-[10px] text-gray-400 mt-0.5">{cred.sub}</p>
               </div>
               {i < credentials.length - 1 && (
                 <div className="hidden md:block w-px h-8 bg-gray-200 ml-4" />
