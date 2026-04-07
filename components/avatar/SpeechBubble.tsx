@@ -18,7 +18,7 @@ export default function SpeechBubble({ message, visible }: SpeechBubbleProps) {
           transition={{ duration: 0.2 }}
           role="status"
           aria-live="polite"
-          className="absolute bottom-full right-0 mb-3 max-w-[240px] bg-white border border-gray-200 rounded-lg p-3 shadow-md text-sm text-gray-700 leading-relaxed"
+          className="fixed bottom-20 right-6 mb-3 w-max max-w-[360px] bg-white border border-gray-200 rounded-lg px-4 py-2.5 shadow-md text-sm text-gray-700 leading-relaxed whitespace-nowrap"
         >
           {message}
           {/* Pointer triangle */}
