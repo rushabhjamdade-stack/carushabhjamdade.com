@@ -1,6 +1,7 @@
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { mdxComponents } from "@/components/blog/MDXComponents";
+import { Badge } from "@/components/ui/badge";
 import { ArrowLeft } from "lucide-react";
 import { notFound } from "next/navigation";
 
@@ -33,53 +34,37 @@ export default async function BlogPostPage({
   if (!post) notFound();
 
   return (
-    <main className="min-h-screen" style={{ background: "#0A0A0F" }}>
+    <main className="min-h-screen bg-white">
       <article className="max-w-3xl mx-auto px-6 py-24">
         <a
           href="/blog"
-          className="inline-flex items-center gap-1 text-sm font-medium mb-8 transition-all"
-          style={{ color: "#FF9933" }}
+          className="inline-flex items-center gap-1 text-blue text-sm font-medium mb-8 hover:gap-2 transition-all"
         >
           <ArrowLeft size={14} /> All posts
         </a>
 
         <div className="flex flex-wrap gap-2 mb-4">
           {post.tags.map((tag) => (
-            <span
+            <Badge
               key={tag}
-              style={{
-                fontSize: 11,
-                fontWeight: 600,
-                color: "#FF9933",
-                background: "rgba(255,153,51,0.1)",
-                padding: "3px 10px",
-                borderRadius: 20,
-              }}
+              variant="outline"
+              className="text-xs text-blue bg-blue-light/50 border-blue/20"
             >
               {tag}
-            </span>
+            </Badge>
           ))}
         </div>
 
-        <h1
-          style={{
-            fontSize: 34,
-            fontWeight: 800,
-            color: "#FAFAFA",
-            marginBottom: 12,
-            fontFamily: "var(--font-display)",
-            lineHeight: 1.2,
-          }}
-        >
+        <h1 className="text-3xl md:text-4xl font-bold text-navy mb-3">
           {post.title}
         </h1>
-        <p style={{ color: "#444", fontSize: 13, marginBottom: 48 }}>
+        <p className="text-gray-400 text-sm mb-12">
           {new Date(post.date).toLocaleDateString("en-US", {
             year: "numeric",
             month: "long",
             day: "numeric",
           })}{" "}
-          · {post.readTime}
+          &middot; {post.readTime}
         </p>
 
         <div className="prose-custom">

@@ -1,6 +1,4 @@
-"use client";
-
-import { useState } from "react";
+import { Badge } from "@/components/ui/badge";
 import { ArrowRight } from "lucide-react";
 
 interface BlogCardProps {
@@ -20,80 +18,37 @@ export default function BlogCard({
   readTime,
   slug,
 }: BlogCardProps) {
-  const [hovered, setHovered] = useState(false);
-
   return (
     <a
       href={`/blog/${slug}`}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      className="block no-underline"
-      style={{
-        background: "rgba(12,12,18,0.5)",
-        border: "1px solid rgba(255,255,255,0.05)",
-        borderRadius: 16,
-        padding: 24,
-        backdropFilter: "blur(10px)",
-        transition: "all 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
-        transform: hovered ? "translateY(-4px)" : "none",
-        borderColor: hovered
-          ? "rgba(255,153,51,0.25)"
-          : "rgba(255,255,255,0.05)",
-        boxShadow: hovered
-          ? "0 20px 60px rgba(0,0,0,0.4), 0 0 30px rgba(255,153,51,0.06)"
-          : "none",
-      }}
+      className="group block p-6 bg-white border border-gray-200 rounded-xl shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300"
     >
       <div className="flex flex-wrap gap-2 mb-3">
         {tags.map((tag) => (
-          <span
+          <Badge
             key={tag}
-            style={{
-              fontSize: 10,
-              fontWeight: 600,
-              color: "#FF9933",
-              background: "rgba(255,153,51,0.1)",
-              padding: "2px 8px",
-              borderRadius: 20,
-            }}
+            variant="outline"
+            className="text-xs text-blue bg-blue-light/50 border-blue/20"
           >
             {tag}
-          </span>
+          </Badge>
         ))}
       </div>
-      <h3
-        style={{
-          fontSize: 17,
-          fontWeight: 700,
-          color: "#FAFAFA",
-          marginBottom: 8,
-          lineHeight: 1.3,
-        }}
-      >
+      <h3 className="text-lg font-semibold text-navy mb-2 group-hover:text-blue transition-colors">
         {title}
       </h3>
-      <p style={{ fontSize: 12, color: "#444", marginBottom: 8 }}>
+      <p className="text-xs text-gray-400 mb-3">
         {new Date(date).toLocaleDateString("en-US", {
           year: "numeric",
           month: "long",
           day: "numeric",
         })}{" "}
-        · {readTime}
+        &middot; {readTime}
       </p>
-      <p
-        style={{
-          color: "#8A8A9A",
-          fontSize: 13.5,
-          lineHeight: 1.6,
-          marginBottom: 12,
-        }}
-      >
+      <p className="text-gray-500 text-sm leading-relaxed mb-4">
         {description}
       </p>
-      <span
-        className="inline-flex items-center gap-1"
-        style={{ color: "#FF9933", fontSize: 13, fontWeight: 600 }}
-      >
+      <span className="text-blue text-sm font-medium inline-flex items-center gap-1">
         Read more <ArrowRight size={14} />
       </span>
     </a>

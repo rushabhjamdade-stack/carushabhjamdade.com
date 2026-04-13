@@ -12,28 +12,17 @@ export default function BlogPage() {
   const posts = getAllPosts();
 
   return (
-    <main className="min-h-screen" style={{ background: "#0A0A0F" }}>
-      <div className="max-w-[1200px] mx-auto px-6 py-24">
+    <main className="min-h-screen bg-white">
+      <div className="max-w-[1400px] mx-auto px-8 md:px-12 lg:px-16 py-24">
         <a
           href="/"
-          className="inline-flex items-center gap-1 text-sm font-medium mb-8 transition-all"
-          style={{ color: "#FF9933" }}
+          className="inline-flex items-center gap-1 text-blue text-sm font-medium mb-8 hover:gap-2 transition-all"
         >
           <ArrowLeft size={14} /> Back to home
         </a>
 
-        <h1
-          style={{
-            fontSize: 38,
-            fontWeight: 800,
-            color: "#FAFAFA",
-            marginBottom: 12,
-            fontFamily: "var(--font-display)",
-          }}
-        >
-          Blog
-        </h1>
-        <p style={{ color: "#555", marginBottom: 48 }}>
+        <h1 className="text-4xl font-bold text-navy mb-3">Blog</h1>
+        <p className="text-gray-500 mb-12">
           Thoughts on AI, finance, and building in public
         </p>
 

@@ -2,52 +2,70 @@ export const products = [
   {
     name: "LockedPDFs",
     description:
-      "Browser-side PDF toolkit for Indian professionals. Merge, split, compress, protect — zero server uploads, 100% privacy.",
+      "Browser-side PDF toolkit for Indian professionals. Merge, split, compress, and protect PDFs — zero server uploads, 100% privacy.",
     status: "live" as const,
-    url: "https://lockedpdfs.com",
+    url: "#",
     emoji: "🔒",
-    tags: ["500+ users", "Privacy-first", "Free"],
+    featured: true,
+    image: "/images/lockedpdfs.jpg",
+    stats: "100% client-side processing",
   },
   {
     name: "Money Smart Kids",
     description:
-      "Financial literacy course for Indian children aged 5-13. 30 interactive lessons on saving, spending, and investing.",
+      "Financial literacy course for Indian children aged 5-13. Fun, interactive lessons on saving, spending, and investing.",
     status: "live" as const,
     url: "https://moneysmartkids.in",
     emoji: "🧒",
-    tags: ["Ages 5-13", "30 lessons", "Razorpay"],
+    featured: true,
+    image: "/images/moneysmartkids.jpg",
+    stats: "Ages 5-13 · Parent-approved",
   },
   {
     name: "TaxPilot",
     description:
       "ITR filing automation for CA firms — from free calculator to full filing packages. AI-powered, compliance-first.",
-    status: "in-dev" as const,
+    status: "coming-soon" as const,
     url: "#",
     emoji: "🧾",
-    tags: ["AI-powered", "For CAs", "ITR automation"],
+    featured: true,
+    image: "/images/taxpilot.jpg",
   },
   {
-    name: "FinLens Ratio Engine",
+    name: "SplitEasy",
     description:
-      "AI-powered financial ratio analysis platform. Upload financials, get instant analysis with fraud & distress scoring.",
-    status: "in-dev" as const,
+      "AI-powered expense splitting app. Scan receipts, split bills, settle up — no more awkward money conversations.",
+    status: "beta" as const,
     url: "#",
-    emoji: "📊",
-    tags: ["Web app", "AI analysis", "Indian GAAP"],
+    emoji: "💸",
+    featured: true,
+    image: "/images/spliteasy.jpg",
   },
 ];
 
 export const navLinks = [
+  { label: "What I Do", href: "#whatido" },
   { label: "Products", href: "#products" },
-  { label: "Story", href: "#story" },
+  { label: "About", href: "#about" },
+  { label: "Blog", href: "#content" },
   { label: "Resources", href: "#resources" },
-  { label: "Connect", href: "#connect" },
+];
+
+export const scrambleWords = [
+  "AI valuation engines",
+  "practice management for CAs",
+  "financial literacy for kids",
+  "tax filing automation",
+  "tools that make finance smarter",
 ];
 
 export const sectionIds = [
   "hero",
+  "whatido",
   "products",
-  "story",
+  "about",
+  "content",
   "resources",
-  "connect",
+  "booking",
+  "newsletter",
 ] as const;

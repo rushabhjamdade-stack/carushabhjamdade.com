@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
 import SectionWrapper from "@/components/shared/SectionWrapper";
 import { Brain, Hammer, PenLine, ArrowRight } from "lucide-react";
@@ -12,6 +11,7 @@ const pillars = [
     description:
       "I design and build AI-powered tools for valuation, tax filing, practice management, and financial analysis — from idea to shipped product.",
     stat: "6+ products",
+    gradient: "from-indigo-500 to-blue-500",
     link: "#products",
   },
   {
@@ -20,6 +20,7 @@ const pillars = [
     description:
       "I build AI-powered products end-to-end — from problem discovery to production deployment. Speed, iteration, and shipping what matters.",
     stat: "Full-stack",
+    gradient: "from-violet-500 to-purple-500",
     link: "#products",
   },
   {
@@ -28,64 +29,20 @@ const pillars = [
     description:
       "I write about AI in finance, building products, and the future of the CA profession — on LinkedIn and my blog.",
     stat: "10+ articles",
+    gradient: "from-blue-500 to-cyan-500",
     link: "#content",
   },
 ];
 
-function DarkCard({
-  children,
-  href,
-}: {
-  children: React.ReactNode;
-  href: string;
-}) {
-  const [hovered, setHovered] = useState(false);
-  return (
-    <a
-      href={href}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      className="block h-full no-underline"
-      style={{
-        background: "var(--bg-secondary)",
-        border: "1px solid var(--border)",
-        borderRadius: 16,
-        padding: 28,
-        backdropFilter: "blur(10px)",
-        transition: "all 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
-        transform: hovered ? "translateY(-4px) scale(1.008)" : "none",
-        borderColor: hovered
-          ? "rgba(255,153,51,0.25)"
-          : "rgba(255,255,255,0.05)",
-        boxShadow: hovered
-          ? "0 20px 60px rgba(0,0,0,0.4), 0 0 30px rgba(255,153,51,0.06)"
-          : "0 2px 12px rgba(0,0,0,0.15)",
-      }}
-    >
-      {children}
-    </a>
-  );
-}
-
 export default function WhatIDo() {
   return (
     <SectionWrapper id="whatido">
-      <p className="section-label">WHAT I DO</p>
-      <h2
-        style={{
-          fontSize: 38,
-          fontWeight: 800,
-          textAlign: "center",
-          lineHeight: 1.15,
-          marginBottom: 48,
-          color: "#FAFAFA",
-          letterSpacing: -1,
-          fontFamily: "var(--font-display)",
-        }}
-      >
-        Three pillars. One mission.
+      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-navy mb-3 text-center">
+        What I do
       </h2>
-
+      <p className="text-gray-500 text-center mb-10 max-w-lg mx-auto">
+        Three pillars. One mission — making finance smarter with AI.
+      </p>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         {pillars.map((pillar, i) => (
           <motion.div
@@ -95,61 +52,34 @@ export default function WhatIDo() {
             viewport={{ once: true }}
             transition={{ delay: i * 0.1, duration: 0.5 }}
           >
-            <DarkCard href={pillar.link}>
-              <div className="flex items-center gap-3 mb-4">
+            <a
+              href={pillar.link}
+              className="group block p-6 bg-white border border-gray-200 rounded-2xl card-premium h-full relative overflow-hidden"
+            >
+              {/* Top gradient bar */}
+              <div
+                className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${pillar.gradient}`}
+              />
+              <div className="flex items-center gap-3 mb-4 mt-1">
                 <div
-                  className="w-11 h-11 rounded-xl flex items-center justify-center"
-                  style={{
-                    background: "rgba(255,153,51,0.1)",
-                    border: "1px solid rgba(255,153,51,0.15)",
-                  }}
+                  className={`w-11 h-11 rounded-xl bg-gradient-to-br ${pillar.gradient} flex items-center justify-center shadow-sm`}
                 >
-                  <pillar.icon className="w-5 h-5" style={{ color: "#FF9933" }} />
+                  <pillar.icon className="w-5 h-5 text-white" />
                 </div>
-                <span
-                  style={{
-                    fontSize: 11,
-                    fontWeight: 600,
-                    color: "#FF9933",
-                    background: "rgba(255,153,51,0.1)",
-                    padding: "3px 10px",
-                    borderRadius: 20,
-                  }}
-                >
+                <span className="text-xs font-semibold text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-full">
                   {pillar.stat}
                 </span>
               </div>
-              <h3
-                style={{
-                  fontSize: 18,
-                  fontWeight: 700,
-                  color: "#FAFAFA",
-                  marginBottom: 8,
-                }}
-              >
+              <h3 className="text-lg font-semibold text-navy mb-2">
                 {pillar.title}
               </h3>
-              <p
-                style={{
-                  color: "#8A8A9A",
-                  fontSize: 15,
-                  lineHeight: 1.6,
-                  marginBottom: 16,
-                }}
-              >
+              <p className="text-gray-500 text-base leading-relaxed mb-4">
                 {pillar.description}
               </p>
-              <span
-                className="inline-flex items-center gap-1"
-                style={{
-                  color: "#FF9933",
-                  fontSize: 13,
-                  fontWeight: 600,
-                }}
-              >
+              <span className="text-indigo-600 text-sm font-medium inline-flex items-center gap-1 group-hover:gap-2 transition-all">
                 Learn more <ArrowRight size={14} />
               </span>
-            </DarkCard>
+            </a>
           </motion.div>
         ))}
       </div>
