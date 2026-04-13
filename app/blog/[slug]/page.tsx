@@ -34,11 +34,11 @@ export default async function BlogPostPage({
   if (!post) notFound();
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-[#0A0A0F]">
       <article className="max-w-3xl mx-auto px-6 py-24">
         <a
           href="/blog"
-          className="inline-flex items-center gap-1 text-blue text-sm font-medium mb-8 hover:gap-2 transition-all"
+          className="inline-flex items-center gap-1 text-[#FF9933] text-sm font-medium mb-8 hover:gap-2 transition-all"
         >
           <ArrowLeft size={14} /> All posts
         </a>
@@ -48,17 +48,17 @@ export default async function BlogPostPage({
             <Badge
               key={tag}
               variant="outline"
-              className="text-xs text-blue bg-blue-light/50 border-blue/20"
+              className="text-xs text-[#FF9933] bg-[rgba(255,153,51,0.1)] border-[rgba(255,153,51,0.2)]"
             >
               {tag}
             </Badge>
           ))}
         </div>
 
-        <h1 className="text-3xl md:text-4xl font-bold text-navy mb-3">
+        <h1 className="text-3xl md:text-4xl font-bold text-[#FAFAFA] mb-3">
           {post.title}
         </h1>
-        <p className="text-gray-400 text-sm mb-12">
+        <p className="text-[#555555] text-sm mb-12">
           {new Date(post.date).toLocaleDateString("en-US", {
             year: "numeric",
             month: "long",

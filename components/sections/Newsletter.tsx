@@ -35,19 +35,19 @@ export default function Newsletter() {
   return (
     <section
       id="newsletter"
-      className="bg-gradient-to-br from-navy via-indigo-950 to-navy py-16 relative overflow-hidden"
+      className="bg-gradient-to-br from-[#0A0A0F] via-[#0A0A0F] to-[#0A0A0F] py-16 relative overflow-hidden"
     >
       <div className="absolute top-0 left-1/4 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-violet-500/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-[1400px] mx-auto px-8 md:px-12 lg:px-16 text-center relative z-10">
-        <p className="text-indigo-300 text-sm font-medium mb-3">
+        <p className="text-[#FF9933] text-sm font-medium mb-3">
           Join 200+ finance professionals
         </p>
         <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
           Get my weekly take on AI in Finance
         </h2>
-        <p className="text-gray-400 mb-6 max-w-md mx-auto">
+        <p className="text-[#555555] mb-6 max-w-md mx-auto">
           No spam. No fluff. Just what&apos;s working — from someone who builds.
         </p>
 
@@ -72,7 +72,7 @@ export default function Newsletter() {
             <Button
               type="submit"
               disabled={status === "loading"}
-              className="bg-gradient-to-r from-indigo-500 to-violet-500 hover:from-indigo-600 hover:to-violet-600 text-white h-12 px-6 rounded-xl whitespace-nowrap shadow-lg shadow-indigo-500/20"
+              className="bg-gradient-to-r from-[#FF9933] to-[#E68A2E] hover:from-[#FFB366] hover:to-[#FF9933] text-white h-12 px-6 rounded-xl whitespace-nowrap shadow-lg"
             >
               {status === "loading" ? "..." : "Subscribe"}
               <Send size={16} className="ml-2" />
@@ -95,7 +95,7 @@ export default function Newsletter() {
           ].map((item) => (
             <div
               key={item.text}
-              className="flex items-center gap-1.5 text-xs text-gray-500"
+              className="flex items-center gap-1.5 text-xs text-[#8A8A9A]"
             >
               <item.icon size={12} />
               {item.text}

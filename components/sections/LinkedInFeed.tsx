@@ -39,10 +39,10 @@ export default function LinkedInFeed() {
     <SectionWrapper id="linkedin">
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-navy mb-2">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#FAFAFA] mb-2">
             On LinkedIn
           </h2>
-          <p className="text-gray-500">
+          <p className="text-[#8A8A9A]">
             Where I share insights on AI, finance, and building products
           </p>
         </div>
@@ -50,7 +50,7 @@ export default function LinkedInFeed() {
           href="https://linkedin.com/in/carushabhjamdade"
           target="_blank"
           rel="noopener noreferrer"
-          className="hidden md:inline-flex items-center gap-2 text-indigo-600 font-medium hover:gap-3 transition-all"
+          className="hidden md:inline-flex items-center gap-2 text-[#FF9933] font-medium hover:gap-3 transition-all"
         >
           Follow on LinkedIn <ArrowRight size={16} />
         </a>
@@ -67,37 +67,37 @@ export default function LinkedInFeed() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.1, duration: 0.5 }}
-            className="group block bg-white border border-gray-200 rounded-2xl p-6 card-premium"
+            className="group block bg-[rgba(12,12,18,0.5)] border border-[rgba(255,255,255,0.05)] backdrop-blur-[10px] rounded-2xl p-6 card-premium"
           >
             {/* LinkedIn header */}
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center text-white text-sm font-bold">
+              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#FF9933] to-[#E68A2E] flex items-center justify-center text-white text-sm font-bold">
                 RJ
               </div>
               <div>
-                <p className="text-sm font-semibold text-gray-800">
+                <p className="text-sm font-semibold text-[#FAFAFA]">
                   CA Rushabh Jamdade
                 </p>
-                <p className="text-xs text-gray-400">{post.date}</p>
+                <p className="text-xs text-[#555555]">{post.date}</p>
               </div>
             </div>
 
-            <h3 className="text-base font-semibold text-navy mb-2 group-hover:text-indigo-600 transition-colors leading-snug">
+            <h3 className="text-base font-semibold text-[#FAFAFA] mb-2 group-hover:text-[#FF9933] transition-colors leading-snug">
               {post.title}
             </h3>
-            <p className="text-sm text-gray-500 leading-relaxed mb-4 line-clamp-3">
+            <p className="text-sm text-[#8A8A9A] leading-relaxed mb-4 line-clamp-3">
               {post.preview}
             </p>
 
             {/* Engagement stats */}
-            <div className="flex items-center gap-4 pt-3 border-t border-gray-100">
-              <span className="flex items-center gap-1 text-xs text-gray-400">
+            <div className="flex items-center gap-4 pt-3 border-t border-[rgba(255,255,255,0.04)]">
+              <span className="flex items-center gap-1 text-xs text-[#555555]">
                 <ThumbsUp size={12} /> {post.likes}
               </span>
-              <span className="flex items-center gap-1 text-xs text-gray-400">
+              <span className="flex items-center gap-1 text-xs text-[#555555]">
                 <MessageCircle size={12} /> {post.comments}
               </span>
-              <span className="flex items-center gap-1 text-xs text-gray-400">
+              <span className="flex items-center gap-1 text-xs text-[#555555]">
                 <Repeat2 size={12} /> {post.reposts}
               </span>
             </div>
@@ -110,7 +110,7 @@ export default function LinkedInFeed() {
           href="https://linkedin.com/in/carushabhjamdade"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-indigo-600 font-medium inline-flex items-center gap-1"
+          className="text-[#FF9933] font-medium inline-flex items-center gap-1"
         >
           Follow on LinkedIn <ArrowRight size={16} />
         </a>

@@ -15,7 +15,7 @@ const resources = [
     format: "Excel",
     icon: Download,
     stats: "500+ downloads",
-    gradient: "from-emerald-400 to-teal-500",
+    gradient: "from-[#28CA41] to-[#28CA41]",
     mockupType: "spreadsheet" as const,
   },
   {
@@ -25,7 +25,7 @@ const resources = [
     cta: "Try it Free",
     format: "Web App",
     icon: ExternalLink,
-    gradient: "from-indigo-400 to-violet-500",
+    gradient: "from-[#FF9933] to-[#E68A2E]",
     mockupType: "dashboard" as const,
   },
   {
@@ -35,7 +35,7 @@ const resources = [
     cta: "Coming Soon",
     format: "PDF Guide",
     icon: Download,
-    gradient: "from-blue-400 to-indigo-500",
+    gradient: "from-[#E68A2E] to-[#FF9933]",
     mockupType: "document" as const,
   },
 ];
@@ -43,10 +43,10 @@ const resources = [
 export default function Resources() {
   return (
     <SectionWrapper id="resources">
-      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-navy mb-3 text-center">
+      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#FAFAFA] mb-3 text-center">
         Free resources
       </h2>
-      <p className="text-gray-500 text-center mb-10 max-w-lg mx-auto">
+      <p className="text-[#8A8A9A] text-center mb-10 max-w-lg mx-auto">
         Tools, templates, and downloads for finance professionals — no catch
         (okay, maybe your email)
       </p>
@@ -59,7 +59,7 @@ export default function Resources() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.1, duration: 0.5 }}
-            className="bg-white border border-gray-200 rounded-2xl card-premium overflow-hidden"
+            className="bg-[rgba(12,12,18,0.5)] border border-[rgba(255,255,255,0.05)] backdrop-blur-[10px] rounded-2xl card-premium overflow-hidden"
           >
             {/* Mockup preview */}
             <div className="p-3 pb-0">
@@ -74,24 +74,24 @@ export default function Resources() {
             </div>
             <div className="p-5 pt-3">
               <div className="flex items-center gap-2 mb-2">
-                <span className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider">
+                <span className="text-[10px] font-semibold text-[#555555] uppercase tracking-wider">
                   {resource.format}
                 </span>
                 {resource.stats && (
-                  <span className="text-[10px] font-medium text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-full">
+                  <span className="text-[10px] font-medium text-[#FF9933] bg-[rgba(255,153,51,0.08)] px-2 py-0.5 rounded-full">
                     {resource.stats}
                   </span>
                 )}
               </div>
-              <h3 className="text-lg font-semibold text-navy mb-2">
+              <h3 className="text-lg font-semibold text-[#FAFAFA] mb-2">
                 {resource.title}
               </h3>
-              <p className="text-gray-500 text-sm leading-relaxed mb-4">
+              <p className="text-[#8A8A9A] text-sm leading-relaxed mb-4">
                 {resource.description}
               </p>
               <Button
                 size="sm"
-                className="bg-gradient-to-r from-indigo-500 to-violet-500 hover:from-indigo-600 hover:to-violet-600 text-white rounded-lg w-full"
+                className="bg-gradient-to-r from-[#FF9933] to-[#E68A2E] hover:from-[#FFB366] hover:to-[#FF9933] text-white rounded-lg w-full"
               >
                 {resource.cta}{" "}
                 <resource.icon size={14} className="ml-1.5" />

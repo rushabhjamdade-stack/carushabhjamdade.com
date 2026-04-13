@@ -48,7 +48,7 @@ export default function Navbar() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-white/80 backdrop-blur-md border-b border-gray-200 shadow-sm"
+          ? "bg-[rgba(10,10,15,0.9)] backdrop-blur-[20px] border-b border-[rgba(255,255,255,0.04)]"
           : "bg-transparent"
       }`}
     >
@@ -62,12 +62,12 @@ export default function Navbar() {
           }}
           className="flex items-center gap-2.5"
         >
-          <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center shadow-md shadow-indigo-200/50">
-            <span className="text-white font-bold text-sm tracking-tight">
+          <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-[#FF9933] to-[#E68A2E] flex items-center justify-center shadow-md">
+            <span className="text-[#0A0A0F] font-bold text-sm tracking-tight">
               RJ
             </span>
           </div>
-          <span className="hidden md:block font-semibold text-gray-900 text-sm">
+          <span className="hidden md:block font-semibold text-[#FAFAFA] text-sm">
             CA Rushabh Jamdade
           </span>
         </a>
@@ -86,8 +86,8 @@ export default function Navbar() {
               }}
               className={`text-[15px] font-medium transition-colors ${
                 activeSection === link.href.replace("#", "")
-                  ? "text-indigo-600"
-                  : "text-gray-500 hover:text-gray-900"
+                  ? "text-[#FF9933]"
+                  : "text-[#8A8A9A] hover:text-[#FAFAFA]"
               }`}
             >
               {link.label}
@@ -95,7 +95,7 @@ export default function Navbar() {
           ))}
           <Button
             size="sm"
-            className="bg-gradient-to-r from-indigo-500 to-violet-500 hover:from-indigo-600 hover:to-violet-600 text-white rounded-lg shadow-md shadow-indigo-200/50 px-5"
+            className="bg-gradient-to-r from-[#FF9933] to-[#E68A2E] hover:from-[#FFB366] hover:to-[#FF9933] text-[#0A0A0F] font-bold rounded-lg shadow-md px-5"
             onClick={() => scrollTo("#booking")}
           >
             Book a Call
@@ -104,7 +104,7 @@ export default function Navbar() {
 
         {/* Mobile Hamburger */}
         <button
-          className="lg:hidden p-2 text-gray-700"
+          className="lg:hidden p-2 text-[#FAFAFA]"
           aria-label="Open menu"
           onClick={() => setMobileOpen(!mobileOpen)}
         >
@@ -116,14 +116,14 @@ export default function Navbar() {
       {mobileOpen && (
         <>
           <div
-            className="fixed inset-0 bg-black/20 z-40 lg:hidden"
+            className="fixed inset-0 bg-black/50 z-40 lg:hidden"
             onClick={() => setMobileOpen(false)}
           />
-          <div className="fixed top-0 right-0 w-72 h-full bg-white z-50 shadow-xl lg:hidden">
+          <div className="fixed top-0 right-0 w-72 h-full bg-[rgba(10,10,15,0.95)] backdrop-blur-[20px] border-l border-[rgba(255,255,255,0.05)] z-50 shadow-xl lg:hidden">
             <div className="flex justify-end p-4">
               <button
                 onClick={() => setMobileOpen(false)}
-                className="p-2 text-gray-500 text-xl"
+                className="p-2 text-[#8A8A9A] text-xl"
                 aria-label="Close menu"
               >
                 &times;
@@ -140,13 +140,13 @@ export default function Navbar() {
                       scrollTo(link.href);
                     }
                   }}
-                  className="text-lg font-medium text-gray-700 hover:text-indigo-600"
+                  className="text-lg font-medium text-[#8A8A9A] hover:text-[#FF9933]"
                 >
                   {link.label}
                 </a>
               ))}
               <Button
-                className="bg-gradient-to-r from-indigo-500 to-violet-500 hover:from-indigo-600 hover:to-violet-600 text-white rounded-lg w-full mt-2"
+                className="bg-gradient-to-r from-[#FF9933] to-[#E68A2E] hover:from-[#FFB366] hover:to-[#FF9933] text-[#0A0A0F] font-bold rounded-lg w-full mt-2"
                 onClick={() => scrollTo("#booking")}
               >
                 Book a Call

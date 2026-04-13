@@ -15,7 +15,7 @@ export default function SectionWrapper({
   id,
   children,
   className = "",
-  bgColor = "bg-white",
+  bgColor = "bg-transparent",
   compact = false,
 }: SectionWrapperProps) {
   return (

@@ -7,11 +7,11 @@ import { products } from "@/lib/constants";
 
 export default function Products() {
   return (
-    <SectionWrapper id="products" bgColor="bg-gray-50/50">
-      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-navy mb-3 text-center">
+    <SectionWrapper id="products" bgColor="bg-[rgba(255,255,255,0.008)]">
+      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#FAFAFA] mb-3 text-center">
         Products I&apos;ve built
       </h2>
-      <p className="text-gray-500 text-center mb-10 max-w-md mx-auto">
+      <p className="text-[#8A8A9A] text-center mb-10 max-w-md mx-auto">
         AI-powered. Purpose-built. Solving real problems in finance.
       </p>
 
@@ -29,7 +29,7 @@ export default function Products() {
         ))}
       </div>
 
-      <p className="text-center text-sm text-gray-400 mt-6">
+      <p className="text-center text-sm text-[#555555] mt-6">
         More products in the pipeline. Stay tuned.
       </p>
     </SectionWrapper>

@@ -25,8 +25,8 @@ export default function Hero() {
       className="min-h-[85vh] flex items-center relative overflow-hidden hero-gradient"
     >
       {/* Decorative blobs */}
-      <div className="absolute top-10 -left-32 w-80 h-80 bg-indigo-200/20 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 -right-32 w-80 h-80 bg-violet-200/20 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-10 -left-32 w-80 h-80 bg-[rgba(255,153,51,0.04)] rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 -right-32 w-80 h-80 bg-[rgba(255,153,51,0.03)] rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-[1400px] mx-auto px-8 md:px-12 lg:px-16 pt-24 pb-12 relative z-10 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
@@ -34,9 +34,9 @@ export default function Hero() {
           <div>
             <motion.div
               {...fadeUp(0)}
-              className="inline-flex items-center gap-2 font-mono text-sm text-gray-500 mb-5 bg-gray-50 border border-gray-200 rounded-full px-4 py-1.5"
+              className="inline-flex items-center gap-2 font-mono text-sm text-gray-500 mb-5 bg-[rgba(255,255,255,0.03)] border border-[rgba(255,255,255,0.05)] rounded-full px-4 py-1.5"
             >
-              <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse-green" />
+              <span className="w-2 h-2 rounded-full bg-[#28CA41] animate-pulse-green" />
               rushabh@finance ~$
             </motion.div>
 
@@ -67,7 +67,7 @@ export default function Hero() {
             <motion.div {...fadeUp(0.55)} className="flex flex-wrap gap-3 mb-6">
               <Button
                 size="lg"
-                className="bg-gradient-to-r from-indigo-500 to-violet-500 hover:from-indigo-600 hover:to-violet-600 text-white rounded-xl px-7 py-5 text-base shadow-lg shadow-indigo-200/50"
+                className="bg-gradient-to-r from-indigo-500 to-violet-500 hover:from-indigo-600 hover:to-violet-600 text-white rounded-xl px-7 py-5 text-base shadow-lg"
                 onClick={() => scrollTo("products")}
               >
                 Explore My Products <ArrowRight size={18} className="ml-1" />
@@ -75,7 +75,7 @@ export default function Hero() {
               <Button
                 size="lg"
                 variant="outline"
-                className="rounded-xl px-7 py-5 text-base border-gray-300 hover:border-indigo-400 hover:text-indigo-600 hover:bg-indigo-50/50"
+                className="rounded-xl px-7 py-5 text-base border-[rgba(255,255,255,0.1)] hover:border-[rgba(255,153,51,0.25)] hover:text-[#FAFAFA] hover:bg-transparent"
                 onClick={() => scrollTo("booking")}
               >
                 Book a Call
@@ -93,7 +93,7 @@ export default function Hero() {
                     (bg, i) => (
                       <div
                         key={i}
-                        className={`w-7 h-7 rounded-full ${bg} border-2 border-white flex items-center justify-center text-white text-[10px] font-bold`}
+                        className={`w-7 h-7 rounded-full ${bg} border-2 border-[#0A0A0F] flex items-center justify-center text-white text-[10px] font-bold`}
                       >
                         {["R", "S", "A", "M"][i]}
                       </div>
@@ -114,9 +114,9 @@ export default function Hero() {
             {/* Terminal one-liner */}
             <motion.div
               {...fadeUp(0.75)}
-              className="font-mono text-sm text-gray-400 bg-gray-50/80 border border-gray-100 rounded-lg px-4 py-2 inline-flex items-center gap-2"
+              className="font-mono text-sm text-gray-400 bg-[rgba(255,255,255,0.03)] border border-[rgba(255,255,255,0.05)] rounded-lg px-4 py-2 inline-flex items-center gap-2"
             >
-              <span className="text-indigo-400">&gt;</span>
+              <span className="text-[#FF9933]">&gt;</span>
               AI products shipped &middot; 51 ratios automated &middot; Big 4
               survivor &middot; chai-powered
             </motion.div>
@@ -136,7 +136,7 @@ export default function Hero() {
                   title="lockedpdfs.com"
                   gradient="from-indigo-500 to-violet-600"
                   mockupType="dashboard"
-                  className="shadow-2xl shadow-indigo-200/30"
+                  className="shadow-2xl"
                 />
               </div>
               {/* Floating card overlay */}
