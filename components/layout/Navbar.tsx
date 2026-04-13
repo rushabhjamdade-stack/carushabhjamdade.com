@@ -1,39 +1,51 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { navLinks } from "@/lib/constants";
-import { Menu } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Menu, X } from "lucide-react";
+
+function MagneticNavBtn({ children, onClick }: { children: React.ReactNode; onClick: () => void }) {
+  const ref = useRef<HTMLButtonElement>(null);
+  const [offset, setOffset] = useState({ x: 0, y: 0 });
+  const [hovered, setHovered] = useState(false);
+
+  const onMove = (e: React.MouseEvent) => {
+    if (!ref.current) return;
+    const r = ref.current.getBoundingClientRect();
+    setOffset({
+      x: (e.clientX - r.left - r.width / 2) * 0.18,
+      y: (e.clientY - r.top - r.height / 2) * 0.18,
+    });
+  };
+
+  return (
+    <button
+      ref={ref}
+      onMouseMove={onMove}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => { setHovered(false); setOffset({ x: 0, y: 0 }); }}
+      onClick={onClick}
+      className="px-5 py-2 text-[13px] font-bold rounded-lg transition-all duration-300 cursor-pointer"
+      style={{
+        background: "linear-gradient(135deg, #FF9933, #E68A2E)",
+        color: "#0A0A0F",
+        transform: `translate(${offset.x}px, ${offset.y}px) scale(${hovered ? 1.05 : 1})`,
+        boxShadow: hovered ? "0 0 30px rgba(255,153,51,0.35), 0 8px 32px rgba(0,0,0,0.4)" : "none",
+      }}
+    >
+      {children}
+    </button>
+  );
+}
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState("");
   const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 60);
+    const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  useEffect(() => {
-    const sectionIds = navLinks
-      .map((l) => l.href.replace("#", ""))
-      .filter((id) => id && !id.startsWith("/"));
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-        if (visible.length > 0) setActiveSection(visible[0].target.id);
-      },
-      { rootMargin: "-20% 0px -60% 0px", threshold: [0, 0.25, 0.5] }
-    );
-    sectionIds.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-    return () => observer.disconnect();
   }, []);
 
   const scrollTo = (href: string) => {
@@ -48,27 +60,28 @@ export default function Navbar() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-white/80 backdrop-blur-md border-b border-gray-200 shadow-sm"
+          ? "backdrop-blur-[20px] border-b"
           : "bg-transparent"
       }`}
+      style={{
+        background: scrolled ? "rgba(10,10,15,0.85)" : "transparent",
+        borderColor: scrolled ? "rgba(255,255,255,0.04)" : "transparent",
+      }}
     >
-      <div className="max-w-[1400px] mx-auto px-8 md:px-12 lg:px-16 h-16 flex items-center justify-between">
-        {/* Branded Logo */}
+      <div className="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between">
+        {/* Left: Logo */}
         <a
           href="#hero"
           onClick={(e) => {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
-          className="flex items-center gap-2.5"
+          className="flex items-center gap-0"
         >
-          <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center shadow-md shadow-indigo-200/50">
-            <span className="text-white font-bold text-sm tracking-tight">
-              RJ
-            </span>
-          </div>
-          <span className="hidden md:block font-semibold text-gray-900 text-sm">
-            CA Rushabh Jamdade
+          <span className="text-[#FF9933] font-[800] text-[20px]">RJ</span>
+          <span className="text-[rgba(255,255,255,0.15)] mx-[10px] text-[18px]">|</span>
+          <span className="text-[#FAFAFA] font-medium text-[13px] tracking-[1.5px]">
+            CA x AI BUILDER
           </span>
         </a>
 
@@ -79,36 +92,30 @@ export default function Navbar() {
               key={link.href}
               href={link.href}
               onClick={(e) => {
-                if (link.href.startsWith("#")) {
-                  e.preventDefault();
-                  scrollTo(link.href);
-                }
+                e.preventDefault();
+                scrollTo(link.href);
               }}
-              className={`text-[15px] font-medium transition-colors ${
-                activeSection === link.href.replace("#", "")
-                  ? "text-indigo-600"
-                  : "text-gray-500 hover:text-gray-900"
-              }`}
+              className="text-[13px] font-medium tracking-[0.5px] transition-colors"
+              style={{ color: "#6A6A7A" }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "#FAFAFA")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "#6A6A7A")}
             >
               {link.label}
             </a>
           ))}
-          <Button
-            size="sm"
-            className="bg-gradient-to-r from-indigo-500 to-violet-500 hover:from-indigo-600 hover:to-violet-600 text-white rounded-lg shadow-md shadow-indigo-200/50 px-5"
-            onClick={() => scrollTo("#booking")}
-          >
+          <MagneticNavBtn onClick={() => scrollTo("#connect")}>
             Book a Call
-          </Button>
+          </MagneticNavBtn>
         </div>
 
         {/* Mobile Hamburger */}
         <button
-          className="lg:hidden p-2 text-gray-700"
+          className="lg:hidden p-2"
+          style={{ color: "#FAFAFA" }}
           aria-label="Open menu"
           onClick={() => setMobileOpen(!mobileOpen)}
         >
-          <Menu size={24} />
+          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
@@ -116,17 +123,24 @@ export default function Navbar() {
       {mobileOpen && (
         <>
           <div
-            className="fixed inset-0 bg-black/20 z-40 lg:hidden"
+            className="fixed inset-0 bg-black/50 z-40 lg:hidden"
             onClick={() => setMobileOpen(false)}
           />
-          <div className="fixed top-0 right-0 w-72 h-full bg-white z-50 shadow-xl lg:hidden">
+          <div
+            className="fixed top-0 right-0 w-72 h-full z-50 shadow-xl lg:hidden backdrop-blur-[20px]"
+            style={{
+              background: "rgba(10,10,15,0.95)",
+              borderLeft: "1px solid rgba(255,255,255,0.05)",
+            }}
+          >
             <div className="flex justify-end p-4">
               <button
                 onClick={() => setMobileOpen(false)}
-                className="p-2 text-gray-500 text-xl"
+                className="p-2 text-xl"
+                style={{ color: "#6A6A7A" }}
                 aria-label="Close menu"
               >
-                &times;
+                <X size={24} />
               </button>
             </div>
             <div className="flex flex-col gap-5 px-6">
@@ -135,22 +149,25 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={(e) => {
-                    if (link.href.startsWith("#")) {
-                      e.preventDefault();
-                      scrollTo(link.href);
-                    }
+                    e.preventDefault();
+                    scrollTo(link.href);
                   }}
-                  className="text-lg font-medium text-gray-700 hover:text-indigo-600"
+                  className="text-lg font-medium transition-colors"
+                  style={{ color: "#8A8A9A" }}
                 >
                   {link.label}
                 </a>
               ))}
-              <Button
-                className="bg-gradient-to-r from-indigo-500 to-violet-500 hover:from-indigo-600 hover:to-violet-600 text-white rounded-lg w-full mt-2"
-                onClick={() => scrollTo("#booking")}
+              <button
+                onClick={() => scrollTo("#connect")}
+                className="mt-2 py-3 rounded-lg font-bold text-sm"
+                style={{
+                  background: "linear-gradient(135deg, #FF9933, #E68A2E)",
+                  color: "#0A0A0F",
+                }}
               >
                 Book a Call
-              </Button>
+              </button>
             </div>
           </div>
         </>

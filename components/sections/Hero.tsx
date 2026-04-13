@@ -1,20 +1,20 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import ScrambleText from "@/components/shared/ScrambleText";
-import BrowserMockup from "@/components/shared/BrowserMockup";
-import CountUpNumber from "@/components/shared/CountUpNumber";
-import { scrambleWords } from "@/lib/constants";
-import { ArrowRight, Users } from "lucide-react";
+import MagneticButton from "@/components/shared/MagneticButton";
+import TerminalTyper from "@/components/shared/TerminalTyper";
 
 const fadeUp = (delay: number) => ({
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5, ease: "easeOut" as const, delay },
+  transition: { duration: 0.6, ease: "easeOut" as const, delay },
 });
 
 export default function Hero() {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
@@ -22,147 +22,114 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="min-h-[85vh] flex items-center relative overflow-hidden hero-gradient"
+      className="min-h-screen flex items-center relative overflow-hidden hero-gradient"
+      style={{ padding: "120px 24px 80px" }}
     >
-      {/* Decorative blobs */}
-      <div className="absolute top-10 -left-32 w-80 h-80 bg-indigo-200/20 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 -right-32 w-80 h-80 bg-violet-200/20 rounded-full blur-3xl pointer-events-none" />
+      <div
+        className="max-w-[1200px] mx-auto w-full"
+        style={{
+          opacity: mounted ? 1 : 0,
+          transform: mounted ? "translateY(0)" : "translateY(30px)",
+          transition: "all 1s cubic-bezier(0.16, 1, 0.3, 1)",
+        }}
+      >
+        {/* Label */}
+        <motion.div
+          {...fadeUp(0)}
+          className="inline-flex items-center gap-2 mb-7"
+          style={{
+            color: "#6A6A7A",
+            fontSize: 11,
+            fontWeight: 600,
+            letterSpacing: 2,
+            textTransform: "uppercase",
+          }}
+        >
+          <span
+            className="animate-pulse-green"
+            style={{
+              width: 8,
+              height: 8,
+              borderRadius: "50%",
+              background: "#28ca41",
+              boxShadow: "0 0 12px rgba(40,202,65,0.5)",
+              display: "inline-block",
+            }}
+          />
+          CHARTERED ACCOUNTANT x AI PRODUCT BUILDER · PUNE, INDIA
+        </motion.div>
 
-      <div className="max-w-[1400px] mx-auto px-8 md:px-12 lg:px-16 pt-24 pb-12 relative z-10 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
-          {/* Left — Text */}
-          <div>
-            <motion.div
-              {...fadeUp(0)}
-              className="inline-flex items-center gap-2 font-mono text-sm text-gray-500 mb-5 bg-gray-50 border border-gray-200 rounded-full px-4 py-1.5"
-            >
-              <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse-green" />
-              rushabh@finance ~$
-            </motion.div>
-
-            <motion.h1
-              {...fadeUp(0.15)}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-4 leading-[1.1]"
-            >
-              <span className="text-navy">CA </span>
-              <span className="text-gradient">Rushabh Jamdade</span>
-            </motion.h1>
-
-            <motion.div
-              {...fadeUp(0.3)}
-              className="text-xl md:text-2xl text-gray-700 mb-5"
-            >
-              I build <ScrambleText words={scrambleWords} />
-            </motion.div>
-
-            <motion.p
-              {...fadeUp(0.45)}
-              className="text-base md:text-lg text-gray-500 max-w-lg mb-6 leading-relaxed"
-            >
-              Chartered Accountant turned AI Product Builder. I create
-              products that solve real problems in finance, tax, and accounting.
-            </motion.p>
-
-            {/* CTAs */}
-            <motion.div {...fadeUp(0.55)} className="flex flex-wrap gap-3 mb-6">
-              <Button
-                size="lg"
-                className="bg-gradient-to-r from-indigo-500 to-violet-500 hover:from-indigo-600 hover:to-violet-600 text-white rounded-xl px-7 py-5 text-base shadow-lg shadow-indigo-200/50"
-                onClick={() => scrollTo("products")}
-              >
-                Explore My Products <ArrowRight size={18} className="ml-1" />
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="rounded-xl px-7 py-5 text-base border-gray-300 hover:border-indigo-400 hover:text-indigo-600 hover:bg-indigo-50/50"
-                onClick={() => scrollTo("booking")}
-              >
-                Book a Call
-              </Button>
-            </motion.div>
-
-            {/* Social proof row */}
-            <motion.div
-              {...fadeUp(0.65)}
-              className="flex items-center gap-6 mb-5"
-            >
-              <div className="flex items-center gap-2">
-                <div className="flex -space-x-2">
-                  {["bg-indigo-400", "bg-violet-400", "bg-blue-400", "bg-emerald-400"].map(
-                    (bg, i) => (
-                      <div
-                        key={i}
-                        className={`w-7 h-7 rounded-full ${bg} border-2 border-white flex items-center justify-center text-white text-[10px] font-bold`}
-                      >
-                        {["R", "S", "A", "M"][i]}
-                      </div>
-                    )
-                  )}
-                </div>
-                <span className="text-sm text-gray-500">
-                  <strong className="text-gray-700">500+</strong> CAs trust my
-                  tools
-                </span>
-              </div>
-              <div className="hidden sm:flex items-center gap-1.5 text-sm text-gray-500">
-                <Users size={14} className="text-indigo-500" />
-                <strong className="text-gray-700">6</strong> products shipped
-              </div>
-            </motion.div>
-
-            {/* Terminal one-liner */}
-            <motion.div
-              {...fadeUp(0.75)}
-              className="font-mono text-sm text-gray-400 bg-gray-50/80 border border-gray-100 rounded-lg px-4 py-2 inline-flex items-center gap-2"
-            >
-              <span className="text-indigo-400">&gt;</span>
-              AI products shipped &middot; 51 ratios automated &middot; Big 4
-              survivor &middot; chai-powered
-            </motion.div>
-          </div>
-
-          {/* Right — Product Mockup */}
-          <motion.div
-            initial={{ opacity: 0, x: 30, rotateY: -5 }}
-            animate={{ opacity: 1, x: 0, rotateY: 0 }}
-            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" as const }}
-            className="hidden lg:block"
+        {/* H1 */}
+        <motion.h1
+          {...fadeUp(0.15)}
+          className="hero-h1"
+          style={{
+            fontSize: 60,
+            fontWeight: 800,
+            lineHeight: 1.08,
+            letterSpacing: -2,
+            color: "#FAFAFA",
+            marginBottom: 24,
+            fontFamily: "var(--font-display)",
+          }}
+        >
+          I build <span style={{ color: "#FF9933" }}>AI products</span>
+          <br />
+          that make finance
+          <br />
+          <span
+            style={{
+              background: "linear-gradient(135deg, #FF9933, #FFD700, #FF6B00)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }}
           >
-            <div className="relative">
-              {/* Main mockup */}
-              <div className="transform rotate-1 hover:rotate-0 transition-transform duration-500">
-                <BrowserMockup
-                  title="lockedpdfs.com"
-                  gradient="from-indigo-500 to-violet-600"
-                  mockupType="dashboard"
-                  className="shadow-2xl shadow-indigo-200/30"
-                />
-              </div>
-              {/* Floating card overlay */}
-              <div className="absolute -bottom-4 -left-4 bg-white rounded-xl shadow-lg border border-gray-100 p-3 flex items-center gap-3">
-                <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-emerald-400 to-green-500 flex items-center justify-center">
-                  <span className="text-white text-sm">&#10003;</span>
-                </div>
-                <div>
-                  <p className="text-xs font-semibold text-gray-800">
-                    <CountUpNumber end={51} /> ratios automated
-                  </p>
-                  <p className="text-[11px] text-gray-400">
-                    Processing complete
-                  </p>
-                </div>
-              </div>
-              {/* Floating stat */}
-              <div className="absolute -top-3 -right-3 bg-white rounded-xl shadow-lg border border-gray-100 px-3 py-2">
-                <p className="text-lg font-bold text-gradient">
-                  <CountUpNumber end={6} suffix="+" />
-                </p>
-                <p className="text-[10px] text-gray-400">Products Live</p>
-              </div>
-            </div>
-          </motion.div>
-        </div>
+            smarter.
+          </span>
+        </motion.h1>
+
+        {/* Subtitle */}
+        <motion.p
+          {...fadeUp(0.3)}
+          style={{
+            color: "#555",
+            fontSize: 16.5,
+            lineHeight: 1.65,
+            maxWidth: 500,
+            marginBottom: 32,
+          }}
+        >
+          From PDF toolkits used by 500+ professionals to financial literacy for
+          kids — I ship products that solve real problems in finance, tax, and
+          accounting.
+        </motion.p>
+
+        {/* CTAs */}
+        <motion.div
+          {...fadeUp(0.45)}
+          className="flex gap-4 flex-wrap"
+        >
+          <MagneticButton
+            primary
+            onClick={() => scrollTo("products")}
+          >
+            Explore Products
+          </MagneticButton>
+          <MagneticButton
+            primary={false}
+            onClick={() => scrollTo("connect")}
+          >
+            Book a Call ↗
+          </MagneticButton>
+        </motion.div>
+
+        {/* Terminal */}
+        <motion.div
+          {...fadeUp(0.6)}
+          className="mt-12 max-w-[560px]"
+        >
+          <TerminalTyper />
+        </motion.div>
       </div>
     </section>
   );

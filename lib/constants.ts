@@ -2,70 +2,52 @@ export const products = [
   {
     name: "LockedPDFs",
     description:
-      "Browser-side PDF toolkit for Indian professionals. Merge, split, compress, and protect PDFs — zero server uploads, 100% privacy.",
+      "Browser-side PDF toolkit for Indian professionals. Merge, split, compress, protect — zero server uploads, 100% privacy.",
     status: "live" as const,
-    url: "#",
+    url: "https://lockedpdfs.com",
     emoji: "🔒",
-    featured: true,
-    image: "/images/lockedpdfs.jpg",
-    stats: "100% client-side processing",
+    tags: ["500+ users", "Privacy-first", "Free"],
   },
   {
     name: "Money Smart Kids",
     description:
-      "Financial literacy course for Indian children aged 5-13. Fun, interactive lessons on saving, spending, and investing.",
+      "Financial literacy course for Indian children aged 5-13. 30 interactive lessons on saving, spending, and investing.",
     status: "live" as const,
     url: "https://moneysmartkids.in",
     emoji: "🧒",
-    featured: true,
-    image: "/images/moneysmartkids.jpg",
-    stats: "Ages 5-13 · Parent-approved",
+    tags: ["Ages 5-13", "30 lessons", "Razorpay"],
   },
   {
     name: "TaxPilot",
     description:
       "ITR filing automation for CA firms — from free calculator to full filing packages. AI-powered, compliance-first.",
-    status: "coming-soon" as const,
+    status: "in-dev" as const,
     url: "#",
     emoji: "🧾",
-    featured: true,
-    image: "/images/taxpilot.jpg",
+    tags: ["AI-powered", "For CAs", "ITR automation"],
   },
   {
-    name: "SplitEasy",
+    name: "FinLens Ratio Engine",
     description:
-      "AI-powered expense splitting app. Scan receipts, split bills, settle up — no more awkward money conversations.",
-    status: "beta" as const,
+      "AI-powered financial ratio analysis platform. Upload financials, get instant analysis with fraud & distress scoring.",
+    status: "in-dev" as const,
     url: "#",
-    emoji: "💸",
-    featured: true,
-    image: "/images/spliteasy.jpg",
+    emoji: "📊",
+    tags: ["Web app", "AI analysis", "Indian GAAP"],
   },
 ];
 
 export const navLinks = [
-  { label: "What I Do", href: "#whatido" },
   { label: "Products", href: "#products" },
-  { label: "About", href: "#about" },
-  { label: "Blog", href: "#content" },
+  { label: "Story", href: "#story" },
   { label: "Resources", href: "#resources" },
-];
-
-export const scrambleWords = [
-  "AI valuation engines",
-  "practice management for CAs",
-  "financial literacy for kids",
-  "tax filing automation",
-  "tools that make finance smarter",
+  { label: "Connect", href: "#connect" },
 ];
 
 export const sectionIds = [
   "hero",
-  "whatido",
   "products",
-  "about",
-  "content",
+  "story",
   "resources",
-  "booking",
-  "newsletter",
+  "connect",
 ] as const;

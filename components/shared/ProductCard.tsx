@@ -1,33 +1,15 @@
 "use client";
 
-import Image from "next/image";
-import { Badge } from "@/components/ui/badge";
-import { ArrowRight } from "lucide-react";
+import { useState } from "react";
 
 interface ProductCardProps {
   name: string;
   description: string;
-  status: "live" | "beta" | "coming-soon";
+  status: "live" | "in-dev";
   url: string;
   emoji: string;
-  image?: string;
-  stats?: string;
+  tags: string[];
 }
-
-const statusConfig = {
-  live: {
-    label: "LIVE",
-    className: "bg-emerald-50 text-emerald-700 border-emerald-200",
-  },
-  beta: {
-    label: "BETA",
-    className: "bg-amber-50 text-amber-700 border-amber-200",
-  },
-  "coming-soon": {
-    label: "COMING SOON",
-    className: "bg-indigo-50 text-indigo-600 border-indigo-200",
-  },
-};
 
 export default function ProductCard({
   name,
@@ -35,60 +17,107 @@ export default function ProductCard({
   status,
   url,
   emoji,
-  image,
-  stats,
+  tags,
 }: ProductCardProps) {
-  const statusInfo = statusConfig[status];
+  const [hovered, setHovered] = useState(false);
+  const isLive = status === "live";
 
   return (
     <a
       href={url}
-      target={url.startsWith("http") ? "_blank" : undefined}
-      rel={url.startsWith("http") ? "noopener noreferrer" : undefined}
-      className="group block bg-white border border-gray-200 rounded-2xl card-premium overflow-hidden"
+      target={isLive ? "_blank" : undefined}
+      rel={isLive ? "noopener noreferrer" : undefined}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      className="block no-underline"
+      style={{
+        background: "rgba(12,12,18,0.5)",
+        border: "1px solid rgba(255,255,255,0.05)",
+        borderRadius: 16,
+        padding: 28,
+        backdropFilter: "blur(10px)",
+        transition: "all 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
+        cursor: "pointer",
+        transform: hovered ? "translateY(-6px)" : "none",
+        borderColor: hovered
+          ? "rgba(255,153,51,0.25)"
+          : "rgba(255,255,255,0.05)",
+        boxShadow: hovered
+          ? "0 24px 60px rgba(0,0,0,0.45), 0 0 30px rgba(255,153,51,0.08)"
+          : "0 2px 12px rgba(0,0,0,0.15)",
+      }}
     >
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
-        <div className="p-6 md:p-8 flex flex-col justify-center">
-          <Badge
-            variant="outline"
-            className={`text-xs font-medium w-fit mb-3 ${statusInfo.className}`}
+      <div
+        className="flex justify-between items-start"
+        style={{ marginBottom: 18 }}
+      >
+        <span style={{ fontSize: 38 }}>{emoji}</span>
+        <span
+          style={{
+            padding: "4px 10px",
+            borderRadius: 20,
+            fontSize: 10,
+            fontWeight: 700,
+            letterSpacing: 1,
+            background: isLive
+              ? "rgba(40,202,65,0.12)"
+              : "rgba(255,153,51,0.12)",
+            color: isLive ? "#28ca41" : "#FF9933",
+          }}
+        >
+          {isLive ? "LIVE" : "IN DEV"}
+        </span>
+      </div>
+      <h3
+        style={{
+          color: "#FAFAFA",
+          fontSize: 21,
+          fontWeight: 700,
+          marginBottom: 8,
+        }}
+      >
+        {name}
+      </h3>
+      <p
+        style={{
+          color: "#777",
+          fontSize: 13.5,
+          lineHeight: 1.6,
+          marginBottom: 18,
+          minHeight: 44,
+        }}
+      >
+        {description}
+      </p>
+      <div className="flex gap-2 flex-wrap">
+        {tags.map((t) => (
+          <span
+            key={t}
+            style={{
+              background: "rgba(255,255,255,0.04)",
+              color: "#555",
+              padding: "4px 10px",
+              borderRadius: 20,
+              fontSize: 11,
+              fontWeight: 500,
+            }}
           >
-            {status === "live" && (
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse-green mr-1.5 inline-block" />
-            )}
-            {statusInfo.label}
-          </Badge>
-          <div className="flex items-center gap-2 mb-2">
-            <span className="text-2xl">{emoji}</span>
-            <h3 className="text-2xl font-bold text-navy group-hover:text-indigo-600 transition-colors">
-              {name}
-            </h3>
-          </div>
-          <p className="text-gray-500 text-base leading-relaxed mb-4">
-            {description}
-          </p>
-          {stats && (
-            <p className="text-sm font-medium text-indigo-600 mb-3">
-              {stats}
-            </p>
-          )}
-          <span className="text-indigo-600 text-sm font-medium inline-flex items-center gap-1 group-hover:gap-2 transition-all">
-            {status === "coming-soon" ? "Learn more" : "Try it"}{" "}
-            <ArrowRight size={14} />
+            {t}
           </span>
-        </div>
-        {/* Screenshot */}
-        <div className="relative bg-gray-50 flex items-center justify-center overflow-hidden min-h-[220px]">
-          {image && (
-            <Image
-              src={image}
-              alt={`${name} screenshot`}
-              width={700}
-              height={450}
-              className="object-cover object-top w-full h-full group-hover:scale-105 transition-transform duration-500"
-            />
-          )}
-        </div>
+        ))}
+      </div>
+      <div
+        style={{
+          marginTop: 20,
+          color: "#FF9933",
+          fontSize: 13,
+          fontWeight: 600,
+          letterSpacing: 0.5,
+          opacity: hovered ? 1 : 0.6,
+          transition: "opacity 0.3s",
+        }}
+      >
+        {isLive ? "Try it →" : "Coming soon →"}
       </div>
     </a>
   );

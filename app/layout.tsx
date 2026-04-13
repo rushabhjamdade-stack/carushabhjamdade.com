@@ -1,22 +1,10 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import "./globals.css";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
-
 export const metadata: Metadata = {
-  title: "CA Rushabh Jamdade — Chartered Accountant × AI Product Builder",
+  title: "CA Rushabh Jamdade — Chartered Accountant x AI Product Builder",
   description:
-    "I build AI-powered products for finance, tax, and accounting. Chartered Accountant and AI Product Builder — creator of LockedPDFs, Money Smart Kids, TaxPilot, SplitEasy and more.",
+    "I build AI-powered products for finance, tax, and accounting. Chartered Accountant and AI Product Builder — creator of LockedPDFs, Money Smart Kids, TaxPilot, FinLens and more.",
   openGraph: {
     title: "CA Rushabh Jamdade — AI Product Builder for Finance",
     description:
@@ -36,10 +24,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
-      >
+      <body className="font-sans antialiased bg-bg-primary text-text-primary">
         {children}
+        <div className="grain-overlay" />
       </body>
     </html>
   );

@@ -1,11 +1,10 @@
 import Navbar from "@/components/layout/Navbar";
-import ScrollProgress from "@/components/layout/ScrollProgress";
 import Hero from "@/components/sections/Hero";
 import CredibilityBar from "@/components/sections/CredibilityBar";
-import StatsBar from "@/components/sections/StatsBar";
 import WhatIDo from "@/components/sections/WhatIDo";
+import StatsBar from "@/components/sections/StatsBar";
 import Products from "@/components/sections/Products";
-import Testimonials from "@/components/sections/Testimonials";
+import TechStack from "@/components/sections/TechStack";
 import About from "@/components/sections/About";
 import FeaturedContent from "@/components/sections/FeaturedContent";
 import LinkedInFeed from "@/components/sections/LinkedInFeed";
@@ -13,20 +12,19 @@ import Resources from "@/components/sections/Resources";
 import BookACall from "@/components/sections/BookACall";
 import Newsletter from "@/components/sections/Newsletter";
 import Footer from "@/components/layout/Footer";
-import AvatarBuddy from "@/components/avatar/AvatarBuddy";
+import FloatingPill from "@/components/shared/FloatingPill";
 
 export default function Home() {
   return (
     <>
-      <ScrollProgress />
       <Navbar />
       <main>
         <Hero />
         <CredibilityBar />
-        <StatsBar />
         <WhatIDo />
+        <StatsBar />
         <Products />
-        <Testimonials />
+        <TechStack />
         <About />
         <FeaturedContent />
         <LinkedInFeed />
@@ -35,7 +33,7 @@ export default function Home() {
         <Newsletter />
       </main>
       <Footer />
-      <AvatarBuddy />
+      <FloatingPill />
     </>
   );
 }
