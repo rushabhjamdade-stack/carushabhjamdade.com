@@ -5,7 +5,7 @@ import CredibilityBar from "@/components/sections/CredibilityBar";
 import StatsBar from "@/components/sections/StatsBar";
 import WhatIDo from "@/components/sections/WhatIDo";
 import Products from "@/components/sections/Products";
-import Testimonials from "@/components/sections/Testimonials";
+
 import About from "@/components/sections/About";
 import FeaturedContent from "@/components/sections/FeaturedContent";
 import LinkedInFeed from "@/components/sections/LinkedInFeed";
@@ -26,7 +26,7 @@ export default function Home() {
         <StatsBar />
         <WhatIDo />
         <Products />
-        <Testimonials />
+
         <About />
         <FeaturedContent />
         <LinkedInFeed />
