@@ -2,18 +2,22 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "CA Rushabh Jamdade — Chartered Accountant × AI Product Builder",
+  title: "CA Rushabh Jamdade — Coming Soon",
   description:
-    "I build AI-powered products for finance, tax, and accounting. Chartered Accountant and AI Product Builder — creator of LockedPDFs, Money Smart Kids, TaxPilot, SplitEasy and more.",
+    "Something new is brewing. CA Rushabh Jamdade — Chartered Accountant turned AI Product Builder. New site coming soon.",
   openGraph: {
-    title: "CA Rushabh Jamdade — AI Product Builder for Finance",
+    title: "CA Rushabh Jamdade — Coming Soon",
     description:
-      "Chartered Accountant turned AI Product Builder. Building tools for finance.",
+      "Something new is brewing. New site coming soon.",
     type: "website",
     url: "https://carushabhjamdade.com",
   },
   twitter: {
     card: "summary_large_image",
+  },
+  robots: {
+    index: true,
+    follow: false,
   },
 };
 
