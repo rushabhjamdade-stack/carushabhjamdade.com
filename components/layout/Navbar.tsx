@@ -17,9 +17,13 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    const sectionIds = navLinks
-      .map((l) => l.href.replace("#", ""))
-      .filter((id) => id && !id.startsWith("/"));
+    const sectionIds = Array.from(
+      new Set(
+        navLinks
+          .map((l) => l.href.replace("#", "").split("-")[0])
+          .filter((id) => id && !id.startsWith("/")),
+      ),
+    );
     const observer = new IntersectionObserver(
       (entries) => {
         const visible = entries
@@ -38,8 +42,19 @@ export default function Navbar() {
 
   const scrollTo = (href: string) => {
     if (href.startsWith("#")) {
-      const el = document.getElementById(href.replace("#", ""));
+      const raw = href.replace("#", "");
+      // Support compound hashes (e.g. "workbook-toolkits" scrolls to "workbook").
+      const baseId = raw.split("-")[0];
+      const el =
+        document.getElementById(raw) || document.getElementById(baseId);
       if (el) el.scrollIntoView({ behavior: "smooth" });
+      // Update the hash so the workbook (or any listener) can react.
+      if (typeof window !== "undefined") {
+        if (window.location.hash !== href) {
+          history.replaceState(null, "", href);
+        }
+        window.dispatchEvent(new CustomEvent("workbook:navigate"));
+      }
     }
     setMobileOpen(false);
   };
@@ -73,7 +88,7 @@ export default function Navbar() {
         </a>
 
         {/* Desktop Nav */}
-        <div className="hidden lg:flex items-center gap-7">
+        <div className="hidden lg:flex items-center gap-5 xl:gap-6">
           {navLinks.map((link) => (
             <a
               key={link.href}
@@ -85,7 +100,7 @@ export default function Navbar() {
                 }
               }}
               className={`text-[15px] font-medium transition-colors ${
-                activeSection === link.href.replace("#", "")
+                activeSection === link.href.replace("#", "").split("-")[0]
                   ? "text-[#FF9933]"
                   : "text-[#8A8A9A] hover:text-[#FAFAFA]"
               }`}
@@ -96,9 +111,9 @@ export default function Navbar() {
           <Button
             size="sm"
             className="bg-gradient-to-r from-[#FF9933] to-[#E68A2E] hover:from-[#FFB366] hover:to-[#FF9933] text-[#0A0A0F] font-bold rounded-lg shadow-md px-5"
-            onClick={() => scrollTo("#booking")}
+            onClick={() => scrollTo("#services")}
           >
-            Book a Call
+            Work With Me →
           </Button>
         </div>
 
@@ -147,9 +162,9 @@ export default function Navbar() {
               ))}
               <Button
                 className="bg-gradient-to-r from-[#FF9933] to-[#E68A2E] hover:from-[#FFB366] hover:to-[#FF9933] text-[#0A0A0F] font-bold rounded-lg w-full mt-2"
-                onClick={() => scrollTo("#booking")}
+                onClick={() => scrollTo("#workbook-toolkits")}
               >
-                Book a Call
+                Get the Toolkits →
               </Button>
             </div>
           </div>

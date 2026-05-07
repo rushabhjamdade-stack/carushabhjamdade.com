@@ -1,11 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
-
-// In-memory store for V1 — swap to Supabase later
-const subscribers: { email: string; timestamp: string }[] = [];
+import { supabase } from "@/lib/supabase";
 
 export async function POST(request: NextRequest) {
   try {
-    const { email } = await request.json();
+    const { email, source } = await request.json();
 
     if (!email || !email.includes("@")) {
       return NextResponse.json(
@@ -14,16 +12,20 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Check for duplicates
-    if (subscribers.some((s) => s.email === email)) {
+    const { error } = await supabase
+      .from("subscribers")
+      .upsert(
+        { email, source: source || "newsletter" },
+        { onConflict: "email" }
+      );
+
+    if (error) {
+      console.error("Supabase error:", error);
       return NextResponse.json(
-        { message: "Already subscribed" },
-        { status: 200 }
+        { error: "Failed to subscribe" },
+        { status: 500 }
       );
     }
-
-    subscribers.push({ email, timestamp: new Date().toISOString() });
-    console.log(`New subscriber: ${email} (total: ${subscribers.length})`);
 
     return NextResponse.json({ message: "Subscribed successfully" });
   } catch {

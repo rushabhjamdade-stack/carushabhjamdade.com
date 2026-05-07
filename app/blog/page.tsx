@@ -1,6 +1,5 @@
 import { getAllPosts } from "@/lib/blog";
 import BlogCard from "@/components/blog/BlogCard";
-import { ArrowLeft } from "lucide-react";
 
 export const metadata = {
   title: "Blog — CA Rushabh Jamdade",
@@ -12,21 +11,29 @@ export default function BlogPage() {
   const posts = getAllPosts();
 
   return (
-    <main className="min-h-screen bg-[#0A0A0F]">
-      <div className="max-w-[1400px] mx-auto px-8 md:px-12 lg:px-16 py-24">
+    <main className="min-h-screen border-b border-line">
+      <div className="mx-auto max-w-site px-6 pb-20 pt-16 md:px-14 md:pt-20">
         <a
           href="/"
-          className="inline-flex items-center gap-1 text-[#FF9933] text-sm font-medium mb-8 hover:gap-2 transition-all"
+          className="mb-8 inline-flex items-center gap-1.5 font-mono text-[12px] text-ink-3 transition-colors hover:text-accent"
         >
-          <ArrowLeft size={14} /> Back to home
+          ← Back to home
         </a>
 
-        <h1 className="text-4xl font-bold text-[#FAFAFA] mb-3">Blog</h1>
-        <p className="text-[#8A8A9A] mb-12">
-          Thoughts on AI, finance, and building in public
+        <div className="mb-3 font-mono text-[11px] uppercase tracking-[0.12em] text-ink-4">
+          <span className="text-accent">§</span> · Blog
+        </div>
+        <h1
+          className="mb-3 font-serif font-normal leading-none tracking-[-0.03em]"
+          style={{ fontSize: "clamp(40px, 5vw, 64px)" }}
+        >
+          Notes from the workbook.
+        </h1>
+        <p className="mb-12 max-w-[560px] text-[16px] text-ink-2">
+          Thoughts on AI, finance, and building in public.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {posts.map((post) => (
             <BlogCard key={post.slug} {...post} />
           ))}
