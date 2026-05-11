@@ -1,8 +1,6 @@
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { mdxComponents } from "@/components/blog/MDXComponents";
-import { Badge } from "@/components/ui/badge";
-import { ArrowLeft } from "lucide-react";
 import { notFound } from "next/navigation";
 
 export async function generateStaticParams() {
@@ -34,40 +32,42 @@ export default async function BlogPostPage({
   if (!post) notFound();
 
   return (
-    <main className="min-h-screen bg-[#0A0A0F]">
-      <article className="max-w-3xl mx-auto px-6 py-24">
+    <main className="min-h-screen border-b border-line">
+      <article className="mx-auto max-w-3xl px-6 pb-20 pt-16 md:pt-20">
         <a
           href="/blog"
-          className="inline-flex items-center gap-1 text-[#FF9933] text-sm font-medium mb-8 hover:gap-2 transition-all"
+          className="mb-8 inline-flex items-center gap-1.5 font-mono text-[12px] text-ink-3 transition-colors hover:text-accent"
         >
-          <ArrowLeft size={14} /> All posts
+          ← All posts
         </a>
 
-        <div className="flex flex-wrap gap-2 mb-4">
+        <div className="mb-4 flex flex-wrap gap-2 font-mono text-[10.5px] uppercase tracking-[0.06em] text-ink-4">
           {post.tags.map((tag) => (
-            <Badge
+            <span
               key={tag}
-              variant="outline"
-              className="text-xs text-[#FF9933] bg-[rgba(255,153,51,0.1)] border-[rgba(255,153,51,0.2)]"
+              className="rounded-[2px] border border-line-2 bg-bg-3 px-2 py-0.5 text-ink-2"
             >
               {tag}
-            </Badge>
+            </span>
           ))}
         </div>
 
-        <h1 className="text-3xl md:text-4xl font-bold text-[#FAFAFA] mb-3">
+        <h1
+          className="mb-4 font-serif font-normal leading-[1.05] tracking-[-0.025em] text-ink"
+          style={{ fontSize: "clamp(36px, 5vw, 56px)" }}
+        >
           {post.title}
         </h1>
-        <p className="text-[#555555] text-sm mb-12">
+        <p className="mb-12 font-mono text-[12px] text-ink-4">
           {new Date(post.date).toLocaleDateString("en-US", {
             year: "numeric",
             month: "long",
             day: "numeric",
           })}{" "}
-          &middot; {post.readTime}
+          · {post.readTime}
         </p>
 
-        <div className="prose-custom">
+        <div>
           <MDXRemote source={post.content} components={mdxComponents} />
         </div>
       </article>

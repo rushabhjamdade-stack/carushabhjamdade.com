@@ -3,50 +3,55 @@ import { MDXRemoteProps } from "next-mdx-remote/rsc";
 export const mdxComponents: MDXRemoteProps["components"] = {
   h1: (props) => (
     <h1
-      className="text-3xl md:text-4xl font-bold text-[#FAFAFA] mt-8 mb-4"
+      className="mt-10 mb-4 font-serif text-[36px] font-normal leading-tight tracking-[-0.02em] text-ink"
       {...props}
     />
   ),
   h2: (props) => (
     <h2
-      className="text-2xl font-semibold text-[#FAFAFA] mt-8 mb-3"
+      className="mt-10 mb-3 font-serif text-[28px] font-normal leading-tight tracking-[-0.02em] text-ink"
       {...props}
     />
   ),
   h3: (props) => (
     <h3
-      className="text-xl font-semibold text-[#FAFAFA] mt-6 mb-2"
+      className="mt-8 mb-2 font-serif text-[22px] font-normal leading-tight tracking-[-0.01em] text-ink"
       {...props}
     />
   ),
   p: (props) => (
-    <p className="text-[#8A8A9A] leading-relaxed mb-4" {...props} />
+    <p className="mb-4 text-[16px] leading-[1.7] text-ink-2" {...props} />
   ),
   ul: (props) => (
-    <ul className="list-disc list-inside text-[#8A8A9A] mb-4 space-y-1" {...props} />
+    <ul className="mb-4 list-disc space-y-1 pl-6 text-ink-2 marker:text-accent" {...props} />
   ),
   ol: (props) => (
-    <ol className="list-decimal list-inside text-[#8A8A9A] mb-4 space-y-1" {...props} />
+    <ol className="mb-4 list-decimal space-y-1 pl-6 text-ink-2 marker:text-accent" {...props} />
   ),
   code: (props) => (
     <code
-      className="bg-[rgba(255,255,255,0.06)] text-[#FAFAFA] font-mono text-sm px-1.5 py-0.5 rounded"
+      className="rounded-[3px] border border-line bg-bg-2 px-1.5 py-0.5 font-mono text-[13px] text-ink"
       {...props}
     />
   ),
   pre: (props) => (
     <pre
-      className="bg-[rgba(12,12,18,0.8)] text-[#FAFAFA] font-mono text-sm p-4 rounded-lg mb-4 overflow-x-auto"
+      className="mb-4 overflow-x-auto rounded-soft border border-line bg-bg-2 p-4 font-mono text-[13px] text-ink"
       {...props}
     />
   ),
   blockquote: (props) => (
     <blockquote
-      className="border-l-4 border-[#FF9933] pl-4 italic text-[#8A8A9A] mb-4"
+      className="mb-4 border-l-2 border-accent bg-bg-1 px-4 py-2 italic text-ink-2"
       {...props}
     />
   ),
   a: (props) => (
-    <a className="text-[#FF9933] hover:text-[#FFB366] underline" {...props} />
+    <a
+      className="border-b border-dotted border-accent text-accent transition-colors hover:border-solid"
+      {...props}
+    />
   ),
+  strong: (props) => <strong className="font-medium text-ink" {...props} />,
+  hr: () => <hr className="my-8 border-line" />,
 };

@@ -1,6 +1,3 @@
-import { Badge } from "@/components/ui/badge";
-import { ArrowRight } from "lucide-react";
-
 interface BlogCardProps {
   title: string;
   date: string;
@@ -21,35 +18,32 @@ export default function BlogCard({
   return (
     <a
       href={`/blog/${slug}`}
-      className="group block p-6 bg-[rgba(12,12,18,0.5)] border border-[rgba(255,255,255,0.05)] rounded-xl shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300"
+      className="group block rounded-soft border border-line bg-bg-1 p-6 transition-colors hover:border-line-2"
     >
-      <div className="flex flex-wrap gap-2 mb-3">
+      <div className="mb-3 flex flex-wrap items-center gap-2 font-mono text-[10.5px] uppercase tracking-[0.06em] text-ink-4">
         {tags.map((tag) => (
-          <Badge
+          <span
             key={tag}
-            variant="outline"
-            className="text-xs text-[#FF9933] bg-[rgba(255,153,51,0.1)] border-[rgba(255,153,51,0.2)]"
+            className="rounded-[2px] border border-line-2 bg-bg-3 px-2 py-0.5 text-ink-2"
           >
             {tag}
-          </Badge>
+          </span>
         ))}
       </div>
-      <h3 className="text-lg font-semibold text-[#FAFAFA] mb-2 group-hover:text-[#FF9933] transition-colors">
+      <h3 className="mb-3 font-serif text-[24px] font-normal leading-[1.15] tracking-[-0.01em] text-ink transition-colors group-hover:text-accent">
         {title}
       </h3>
-      <p className="text-xs text-[#555555] mb-3">
+      <p className="mb-3 font-mono text-[11px] text-ink-4">
         {new Date(date).toLocaleDateString("en-US", {
           year: "numeric",
           month: "long",
           day: "numeric",
         })}{" "}
-        &middot; {readTime}
+        · {readTime}
       </p>
-      <p className="text-[#8A8A9A] text-sm leading-relaxed mb-4">
-        {description}
-      </p>
-      <span className="text-[#FF9933] text-sm font-medium inline-flex items-center gap-1">
-        Read more <ArrowRight size={14} />
+      <p className="mb-4 text-[14px] leading-[1.5] text-ink-2">{description}</p>
+      <span className="inline-flex items-center gap-1 font-mono text-[12px] text-accent">
+        Read more <span className="transition-transform group-hover:translate-x-0.5">→</span>
       </span>
     </a>
   );

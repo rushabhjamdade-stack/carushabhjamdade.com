@@ -1,9 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Send, CheckCircle, Shield, Clock, Mail } from "lucide-react";
+import { motion } from "framer-motion";
+import { Send, CheckCircle2, Shield, Clock, Mail } from "lucide-react";
 
 export default function Newsletter() {
   const [email, setEmail] = useState("");
@@ -19,7 +18,7 @@ export default function Newsletter() {
       const res = await fetch("/api/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, source: "newsletter" }),
       });
       if (res.ok) {
         setStatus("success");
@@ -35,74 +34,104 @@ export default function Newsletter() {
   return (
     <section
       id="newsletter"
-      className="bg-gradient-to-br from-[#0A0A0F] via-[#0A0A0F] to-[#0A0A0F] py-16 relative overflow-hidden"
+      className="relative py-20 md:py-28 overflow-hidden"
     >
-      <div className="absolute top-0 left-1/4 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-violet-500/10 rounded-full blur-3xl pointer-events-none" />
+      {/* Saffron glow band */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-60"
+        style={{
+          background:
+            "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(255,153,51,0.08), transparent 70%)",
+        }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 h-px"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent, rgba(255,153,51,0.25), transparent)",
+        }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-px"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent, rgba(255,153,51,0.15), transparent)",
+        }}
+      />
 
-      <div className="max-w-[1400px] mx-auto px-8 md:px-12 lg:px-16 text-center relative z-10">
-        <p className="text-[#FF9933] text-sm font-medium mb-3">
-          Join 200+ finance professionals
-        </p>
-        <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
-          Get my weekly take on AI in Finance
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.6 }}
+        className="relative z-10 max-w-site mx-auto px-6 md:px-12 lg:px-16 text-center"
+      >
+        <div className="font-mono text-xs uppercase tracking-[0.2em] text-[#FF9933] mb-4">
+          § 05 · Newsletter
+        </div>
+        <h2 className="font-display font-black text-[#FAFAFA] tracking-[-0.02em] text-[40px] md:text-[56px] lg:text-[64px] leading-[0.98] mb-5">
+          Get the next tool first.
         </h2>
-        <p className="text-[#555555] mb-6 max-w-md mx-auto">
-          No spam. No fluff. Just what&apos;s working — from someone who builds.
+        <p className="text-base md:text-lg text-[#C4C4C4] max-w-xl mx-auto mb-10 leading-relaxed">
+          I ship a new tool every few weeks. Subscribe to get it before
+          LinkedIn sees it.
         </p>
 
         {status === "success" ? (
-          <div className="flex items-center justify-center gap-2 text-emerald-400">
-            <CheckCircle size={20} />
-            <span>You&apos;re in! Check your inbox.</span>
+          <div className="inline-flex items-center gap-2 text-[#28CA41] text-base">
+            <CheckCircle2 size={20} />
+            <span>You&apos;re in. Check your inbox soon.</span>
           </div>
         ) : (
           <form
             onSubmit={handleSubmit}
             className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
           >
-            <Input
+            <input
               type="email"
+              required
               placeholder="your@email.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              required
-              className="bg-white/10 border-white/20 text-white placeholder:text-gray-500 h-12 rounded-xl focus:ring-indigo-400 focus:border-indigo-400"
+              className="flex-1 bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.08)] focus:border-[rgba(255,153,51,0.4)] rounded-xl px-5 h-12 text-[#FAFAFA] placeholder-[#555] outline-none focus:ring-2 focus:ring-[rgba(255,153,51,0.15)] transition-all"
             />
-            <Button
+            <button
               type="submit"
               disabled={status === "loading"}
-              className="bg-gradient-to-r from-[#FF9933] to-[#E68A2E] hover:from-[#FFB366] hover:to-[#FF9933] text-white h-12 px-6 rounded-xl whitespace-nowrap shadow-lg"
+              className="inline-flex items-center justify-center gap-2 rounded-xl px-6 h-12 text-sm font-semibold text-[#0A0A0F] transition-all hover:-translate-y-0.5 disabled:opacity-60 whitespace-nowrap"
+              style={{
+                backgroundImage:
+                  "linear-gradient(135deg, #FF9933 0%, #FFB366 50%, #FFD700 100%)",
+              }}
             >
-              {status === "loading" ? "..." : "Subscribe"}
-              <Send size={16} className="ml-2" />
-            </Button>
+              {status === "loading" ? "…" : "Subscribe"}
+              <Send size={15} />
+            </button>
           </form>
         )}
 
         {status === "error" && (
-          <p className="text-red-400 text-sm mt-3">
+          <p className="text-red-400 text-sm mt-4">
             Something went wrong. Please try again.
           </p>
         )}
 
-        {/* Trust indicators */}
-        <div className="flex flex-wrap justify-center gap-6 mt-6">
-          {[
-            { icon: Clock, text: "Weekly delivery" },
-            { icon: Shield, text: "No spam ever" },
-            { icon: Mail, text: "Unsubscribe anytime" },
-          ].map((item) => (
-            <div
-              key={item.text}
-              className="flex items-center gap-1.5 text-xs text-[#8A8A9A]"
-            >
-              <item.icon size={12} />
-              {item.text}
-            </div>
-          ))}
+        {/* Trust strip */}
+        <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 mt-8 text-[11px] font-mono uppercase tracking-widest text-[#555]">
+          <span className="inline-flex items-center gap-1.5">
+            <Clock size={11} /> Weekly-ish
+          </span>
+          <span className="inline-flex items-center gap-1.5">
+            <Shield size={11} /> No spam
+          </span>
+          <span className="inline-flex items-center gap-1.5">
+            <Mail size={11} /> Unsubscribe anytime
+          </span>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

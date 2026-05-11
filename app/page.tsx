@@ -1,41 +1,21 @@
-import Navbar from "@/components/layout/Navbar";
-import ScrollProgress from "@/components/layout/ScrollProgress";
-import Hero from "@/components/sections/Hero";
-import CredibilityBar from "@/components/sections/CredibilityBar";
-import StatsBar from "@/components/sections/StatsBar";
-import WhatIDo from "@/components/sections/WhatIDo";
-import Products from "@/components/sections/Products";
+import { Hero } from "@/components/Hero";
+import { WorkbookSection } from "@/components/workbook/WorkbookSection";
+import { ServicesSection } from "@/components/services/ServicesSection";
+import { PremiumSection } from "@/components/premium/PremiumSection";
+import { AboutSection } from "@/components/about/AboutSection";
+import { Newsletter } from "@/components/Newsletter";
+import { SiteFooter } from "@/components/SiteFooter";
 
-import About from "@/components/sections/About";
-import FeaturedContent from "@/components/sections/FeaturedContent";
-import LinkedInFeed from "@/components/sections/LinkedInFeed";
-import Resources from "@/components/sections/Resources";
-import BookACall from "@/components/sections/BookACall";
-import Newsletter from "@/components/sections/Newsletter";
-import Footer from "@/components/layout/Footer";
-import AvatarBuddy from "@/components/avatar/AvatarBuddy";
-
-export default function Home() {
+export default function HomePage() {
   return (
-    <>
-      <ScrollProgress />
-      <Navbar />
-      <main>
-        <Hero />
-        <CredibilityBar />
-        <StatsBar />
-        <WhatIDo />
-        <Products />
-
-        <About />
-        <FeaturedContent />
-        <LinkedInFeed />
-        <Resources />
-        <BookACall />
-        <Newsletter />
-      </main>
-      <Footer />
-      <AvatarBuddy />
-    </>
+    <main>
+      <Hero />
+      <WorkbookSection />
+      <ServicesSection />
+      <PremiumSection />
+      <AboutSection />
+      <Newsletter />
+      <SiteFooter />
+    </main>
   );
 }
