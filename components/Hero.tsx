@@ -24,10 +24,10 @@ export function Hero() {
         ))}
       </div>
 
-      <div className="grid grid-cols-[var(--col-w)_1fr] min-h-[calc(100vh-76px-36px)]">
+      <div className="grid grid-cols-[var(--col-w)_1fr]">
         {/* Row gutter */}
         <aside className="flex flex-col items-center gap-[14px] border-r border-line bg-bg-1 pt-[26px] font-mono text-[11px] text-ink-4">
-          {Array.from({ length: 10 }, (_, i) => i + 1).map((n) => {
+          {Array.from({ length: 8 }, (_, i) => i + 1).map((n) => {
             const active = n === 2;
             return (
               <div
@@ -45,9 +45,9 @@ export function Hero() {
         </aside>
 
         {/* Hero body */}
-        <div className="grid grid-cols-1 gap-8 px-6 pb-20 pt-8 md:grid-cols-[1fr_380px] md:gap-14 md:px-14 md:pb-20 md:pt-14">
+        <div className="grid grid-cols-1 items-stretch gap-8 px-6 pb-14 pt-8 md:grid-cols-[1fr_380px] md:gap-14 md:px-14 md:pb-16 md:pt-12">
           {/* Left column */}
-          <div>
+          <div className="flex flex-col">
             <div className="mb-5 flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.12em] text-ink-4">
               <span className="h-px w-7 bg-accent" />
               <span>§ 01 — The Operator</span>
@@ -71,7 +71,7 @@ export function Hero() {
               data dumps into decision tools.
             </p>
 
-            <div className="mb-14 flex flex-wrap gap-3">
+            <div className="mb-10 flex flex-wrap gap-3">
               <a
                 href="#workbook"
                 className="group inline-flex items-center gap-2.5 rounded-chip bg-accent px-[18px] py-3 font-mono text-[13px] font-medium text-[#0b0d0c] transition-transform hover:-translate-y-px"
@@ -92,7 +92,7 @@ export function Hero() {
               </a>
             </div>
 
-            <div className="flex flex-wrap gap-12 border-t border-line pt-6 font-mono text-[12px] text-ink-3">
+            <div className="mt-auto flex flex-wrap gap-12 border-t border-line pt-6 font-mono text-[12px] text-ink-3">
               <div>
                 <div className="mb-1.5 text-[10px] uppercase tracking-[0.08em] text-ink-4">
                   Currently shipping
@@ -109,7 +109,7 @@ export function Hero() {
           </div>
 
           {/* Right column — trust ledger */}
-          <aside className="self-start rounded-soft border border-line bg-bg-1 p-6 md:sticky md:top-[120px]">
+          <aside className="flex h-full flex-col rounded-soft border border-line bg-bg-1 p-6">
             <h4 className="mb-3.5 font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-ink-4">
               {"// Trust ledger"}
             </h4>
@@ -130,7 +130,7 @@ export function Hero() {
                 </span>
               </div>
             ))}
-            <div className="mt-4 border-t border-line pt-4 font-mono text-[11px] leading-[1.7] text-ink-3">
+            <div className="mt-auto border-t border-line pt-4 font-mono text-[11px] leading-[1.7] text-ink-3">
               <div className="mb-1.5 text-[10px] uppercase tracking-[0.08em] text-ink-4">
                 {"// Workshops delivered at"}
               </div>
@@ -139,11 +139,12 @@ export function Hero() {
           </aside>
         </div>
 
-        {/* Scroll hint */}
-        <div className="pointer-events-none absolute bottom-12 left-1/2 hidden -translate-x-1/2 items-center gap-2 font-mono text-[11px] tracking-[0.08em] text-ink-4 md:flex">
-          scroll <span className="inline-block animate-bob">↓</span> or{" "}
-          <span className="kbd">J</span> for next sheet
-        </div>
+      </div>
+
+      {/* Scroll hint */}
+      <div className="hidden items-center justify-center gap-2 border-t border-line py-3 font-mono text-[11px] tracking-[0.08em] text-ink-4 md:flex">
+        scroll <span className="inline-block animate-bob">↓</span> or{" "}
+        <span className="kbd">J</span> for next sheet
       </div>
     </section>
   );
